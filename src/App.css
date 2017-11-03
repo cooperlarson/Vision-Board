@@ -9,27 +9,42 @@
 
 .App-header {
   background-color: #222;
-  height: 100px;
+  height: 50px;
   padding: 20px;
   color: white;
+  margin-bottom: 15px;
 }
 
 .App-title {
   font-size: 1.5em;
+  margin-top: -5px;
 }
 
 .App-intro {
   font-size: large;
 }
 
-.new-goal {
-  width: 150px;
-  display: none;
+.btn {
+  background-color: rgb(36, 107, 213);
+  color: #f7f7f7;
 }
 
-.goals li img {
-  width: 100%;
-  height: 100%;
+.btn:hover {
+  background-color: rgb(29, 89, 172);
+  color: white;
+}
+
+.content-header {
+  height: 40px;
+}
+
+.content-header h3 {
+  margin: 0;
+}
+
+.content-header button.add-new {
+  float: right;
+  margin-top: -5px;
 }
 
 ul.goals-list {
@@ -38,32 +53,42 @@ ul.goals-list {
   margin-left: -15px;
 }
 
-.goals-wrapper {
-  max-width: 1280px;
+.goal-box {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .goal-item {
-  width: 393px;
-  height: 300px;
+  width: 100%;
+  height: 200px;
   display: block;
   float: left;
-  margin-right: 25px;
-  margin-bottom: 25px;
   background-size: cover;
   background-position: center;
   border-radius: 7.5px;
+  margin-bottom: 20px;
 }
 
 .goal-info {
+  opacity: .8;
   background-color: rgba(0, 0, 0, 0.3);
   color: #fff;
-  height: 300px;
-  margin-top: -19px;
+  height: 100%;
+  margin-top: -20px;
   border-radius: 7.5px;
 }
 
+.goal-info:hover {
+  opacity: 1;
+}
+
 .goal-info h3 {
-  padding-top: 90px;
+  padding-top: 50px;
+  font-size: 20px;
+}
+
+.goal-info h4 {
+  font-size: 14px;
 }
 
 .goal-info p {
