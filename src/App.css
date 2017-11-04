@@ -24,7 +24,7 @@
   font-size: large;
 }
 
-.btn {
+.btn, .btn:focus {
   background-color: rgb(36, 107, 213);
   color: #f7f7f7;
 }
@@ -51,6 +51,21 @@ ul.goals-list {
   list-style: none;
   display: block;
   margin-left: -15px;
+}
+
+i.fa.delete-goal {
+  position: absolute;
+  left: 15px;
+  top: 2px;
+  font-size: 24px;
+  color: rgb(186, 2, 2);
+  opacity: 0;
+  cursor: pointer;
+  cursor: hand;
+}
+
+i.fa.delete-goal:hover {
+  opacity: 1;
 }
 
 .goal-box {

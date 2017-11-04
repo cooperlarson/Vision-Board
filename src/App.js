@@ -37,6 +37,11 @@ class App extends Component {
     });
   }
 
+  removeItem(itemId) {
+    const goalsRef = firebase.database().ref(`/goals/${itemId}`);
+    goalsRef.remove();
+  }
+
   render() {
     return (
       <div className="App">
@@ -60,6 +65,7 @@ class App extends Component {
                   <div key={goal.id} className="col-xs-12 col-sm-6 col-md-4 col-lg-3 goal-box">
                     <div className="goal-item" style={bgImg}>
                       <div className="goal-info">
+                        <i class="fa fa-times-circle-o delete-goal" aria-hidden="true" onClick={() => this.removeItem(goal.id)}></i>
                         <h3>{goal.title}</h3>
                         <p>Due: {goal.due}</p>
                       </div>

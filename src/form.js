@@ -60,7 +60,7 @@ render() {
               </div>
               <div className="form-group">
               <label>Goal Due</label>
-              <input type="month" name="due" onChange={this.handleChange} value={this.state.due} autofocus />
+              <input type="month" name="due" onChange={this.handleChange} value={this.state.due} autoFocus />
               </div>
               <button className="btn btn-submit" type="submit" form="goalForm" value="Submit">Add Item</button>
             </form>
