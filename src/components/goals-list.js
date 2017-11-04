@@ -3,28 +3,29 @@ import firebase from '../actions/firebase';
 import { connect } from 'react-redux';
 import { fetchGoals } from '../actions';
 import _ from 'lodash';
+import { initialState } from '../actions';
 
 class GoalsList extends Component {
-    //setting initial state
-    constructor() {
-      super();
-      this.state = {
-        title: '',
-        description: '',
-        imgUrl: '',
-        due: '',
-        goals: []
-      }
+  constructor() {
+    super();
+    this.state = {
+      title: '',
+      description: '',
+      imgUrl: '',
+      due: ''
     };
+  }
 
     // retrieving goals from database
   componentDidMount() {
-    fetchGoals();
+    this.props.onFetchGoals();
   }
 
-  renderGoals() {
-      return (
-        this.state.goals.map((goal) => {
+  render() {
+    const { title, description, imgUrl, due } = this.props.goals;
+    return (
+      <section className='goals'>
+        {goals.map((title, description, imgUrl, due) => {
           const bgImg = {backgroundImage: `url(${goal.imgUrl})`}
           return (
             <div key={goal.id} className="col-xs-12 col-sm-6 col-md-4 col-lg-3 goal-box">
@@ -38,20 +39,23 @@ class GoalsList extends Component {
             </div>
           );
         })
+        }
       );
-  }
-
-  render() {
-    return (
-      <section className='goals'>
-        {this.renderGoals()}
+    }
       </section>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { goals: state.goals };
+  return
+    { goals: state.goals };
 }
 
-export default connect(mapStateToProps, {fetchGoals})(GoalsList);
+function mapDispatchToProps(dispatch) {
+  return
+    { onFetchGoals: () => dispatch(fetchGoals())
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GoalsList);
