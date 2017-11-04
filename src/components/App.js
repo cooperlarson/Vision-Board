@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../css/App.css';
 import ContentHeader from './content-header';
 import GoalsList from './goals-list';
 import Header from './Header';

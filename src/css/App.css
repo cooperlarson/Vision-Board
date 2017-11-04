@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  max-width: 100%;
 }
 
 .App-logo {
@@ -10,7 +11,7 @@
 .App-header {
   background-color: #222;
   height: 50px;
-  padding: 20px;
+  padding: 20px 0;
   color: white;
   margin-bottom: 15px;
 }
@@ -85,8 +86,7 @@ i.fa.delete-goal:hover {
 }
 
 .goal-info {
-  opacity: .8;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.1);
   color: #fff;
   height: 100%;
   margin-top: -20px;
@@ -94,7 +94,7 @@ i.fa.delete-goal:hover {
 }
 
 .goal-info:hover {
-  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .goal-info h3 {

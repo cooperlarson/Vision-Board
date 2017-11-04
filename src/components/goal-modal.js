@@ -27,7 +27,7 @@ class ModalForm extends Component {
     return (
       <div>
       <button className="btn add-new" onClick={this.open}>Add Goal</button>
-      <Modal show={this.state.showModal} onHide={this.close}>
+      <Modal className="modal-form" show={this.state.showModal} onHide={this.close}>
         <Modal.Header closeButton>
           <Modal.Title>Add New Goal</Modal.Title>
         </Modal.Header>

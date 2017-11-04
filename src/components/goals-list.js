@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import firebase from './firebase';
+import firebase from '../actions/firebase';
+import { connect } from 'react-redux';
+import { fetchGoals } from '../actions';
+import _ from 'lodash';
 
 class GoalsList extends Component {
     //setting initial state
@@ -16,34 +19,12 @@ class GoalsList extends Component {
 
     // retrieving goals from database
   componentDidMount() {
-    const goalsRef = firebase.database().ref('goals');
-    goalsRef.on('value', (snapshot) => {
-      let goals = snapshot.val();
-      let newState = [];
-      for (let goal in goals) {
-        newState.push({
-          id: goal,
-          title: goals[goal].title,
-          description: goals[goal].description,
-          imgUrl: goals[goal].imgUrl,
-          due: goals[goal].due
-        });
-      }
-      this.setState({
-        goals: newState
-      });
-    });
+    fetchGoals();
   }
 
-  removeItem(itemId) {
-    const goalsRef = firebase.database().ref(`/goals/${itemId}`);
-    goalsRef.remove();
-  }
-
-  render() {
-    return (
-      <section className='goals'>
-        {this.state.goals.map((goal) => {
+  renderGoals() {
+      return (
+        this.state.goals.map((goal) => {
           const bgImg = {backgroundImage: `url(${goal.imgUrl})`}
           return (
             <div key={goal.id} className="col-xs-12 col-sm-6 col-md-4 col-lg-3 goal-box">
@@ -56,10 +37,21 @@ class GoalsList extends Component {
               </div>
             </div>
           );
-        })}
+        })
+      );
+  }
+
+  render() {
+    return (
+      <section className='goals'>
+        {this.renderGoals()}
       </section>
     );
   }
 }
 
-export default GoalsList;
+function mapStateToProps(state) {
+  return { goals: state.goals };
+}
+
+export default connect(mapStateToProps, {fetchGoals})(GoalsList);

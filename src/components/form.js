@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from './firebase';
+import firebase from '../actions/firebase';
 
 class Form extends Component {
     //setting initial state
@@ -59,8 +59,8 @@ render() {
               <input className="form-control" type="text" name="imgUrl" placeholder="Paste the goal image's URL here" onChange={this.handleChange} value={this.state.imgUrl} />
               </div>
               <div className="form-group">
-              <label>Goal Due</label>
-              <input type="month" name="due" onChange={this.handleChange} value={this.state.due} autoFocus />
+              <label>Goal Due</label><br />
+              <input type="month" name="due" onChange={this.handleChange} value={this.state.due} />
               </div>
               <button className="btn btn-submit" type="submit" form="goalForm" value="Submit">Add Item</button>
             </form>
