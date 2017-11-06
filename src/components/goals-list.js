@@ -12,7 +12,11 @@ import GoalItem from './goal-item';
 
 class GoalsList extends Component {
   static propTypes = {
-    goals: PropTypes.object
+    goals: PropTypes.object,
+    firebase: PropTypes.shape({
+      push: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    })
   }
 
   render() {

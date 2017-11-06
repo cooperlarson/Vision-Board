@@ -1,45 +1,25 @@
 import React, { Component } from 'react';
-import firebase from '../actions/firebase';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { firebaseConnect, dataToJS } from 'react-redux-firebase';
 
 class Form extends Component {
-    //setting initial state
-    constructor() {
-      super();
-      this.state = {
-        title: '',
-        description: '',
-        imgUrl: '',
-        due: '',
-        goals: []
-      }
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    };
-
- //handling event change in form
- handleChange(e) {
-  this.setState({
-    [e.target.name]: e.target.value
-  });
-}
-
-//handling form submit
-handleSubmit(e) {
-  e.preventDefault();
-  const goalsRef = firebase.database().ref('goals');
-  const goal = {
-    title: this.state.title,
-    description: this.state.description,
-    imgUrl: this.state.imgUrl,
-    due: this.state.due
+  static proptypes = {
+    goals: PropTypes.object,
+    firebase: PropTypes.object
   }
-  goalsRef.push(goal);
-  this.setState({
-    title: '',
-    description: '',
-    imgUrl: '',
-    due: ''
-  });
+
+  //handling form submit
+handleSubmit = (e) => {
+  e.preventDefault();
+const {title} = this.refs;
+const {imgUrl} = this.refs;
+const {due} = this.refs;
+const { firebase } = this.props
+firebase.push('/goals', { title: title.value, imgUrl: imgUrl.value, due: due.value })
+title.value = '';
+imgUrl.value = '';
+due.value = '';
 }
 
 render() {
@@ -48,19 +28,15 @@ render() {
             <form id="goalForm" onSubmit={this.handleSubmit}>
               <div className="form-group">
               <label>Goal Name</label>
-              <input className="form-control" type="text" name="title" placeholder="What is your goal?" onChange={this.handleChange} value={this.state.title} />
-              </div>
-              <div className="form-group">
-              <label>Description</label>
-              <input className="form-control" type="text" name="description" placeholder="Additional info about your goal" onChange={this.handleChange} value={this.state.description} />
+              <input className="form-control" type="text" name="title" placeholder="What is your goal?" ref="title" />
               </div>
               <div className="form-group">
               <label>Image URL</label>
-              <input className="form-control" type="text" name="imgUrl" placeholder="Paste the goal image's URL here" onChange={this.handleChange} value={this.state.imgUrl} />
+              <input className="form-control" type="text" name="imgUrl" placeholder="Paste the goal image's URL here" ref="imgUrl" />
               </div>
               <div className="form-group">
               <label>Goal Due</label><br />
-              <input type="month" name="due" onChange={this.handleChange} value={this.state.due} />
+              <input type="month" name="due" ref="due" />
               </div>
               <button className="btn btn-submit" type="submit" form="goalForm" value="Submit">Add Item</button>
             </form>
@@ -71,4 +47,12 @@ render() {
 
 }
 
-export default Form;
+const wrappedForm = firebaseConnect([
+  '/goals'
+])(Form)
+
+export default connect(
+  ({firebase}) => ({
+    goals: dataToJS(firebase, 'goals'),
+  })
+)(wrappedForm)
