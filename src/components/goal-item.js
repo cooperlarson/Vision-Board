@@ -13,15 +13,15 @@ class GoalItem extends Component {
 
     const goalBgImg = {backgroundImage: `url(${goal.imgUrl})`};
 
-    const deleteGoal = (event) => (
+    const deleteGoal = (event) => {
       firebase.remove(`/goals/${id}`)
-    );
+    }
 
     return (
-      <div key={id} className="col-xs-12 col-sm-6 col-md-4 col-lg-3 goal-box">
+      <div key={id} id={id} className="col-xs-12 col-sm-6 col-md-4 col-lg-3 goal-box">
       <div className="goal-item" style={goalBgImg}>
         <div className="goal-info">
-          <i className="fa fa-times-circle-o delete-goal" onClick={firebase.remove(`goals/${id}`)} aria-hidden="true"></i>
+          <i className="fa fa-times-circle-o delete-goal" onClick={deleteGoal} aria-hidden="true"></i>
           <h3>{goal.title}</h3>
           <p>Due: {goal.due}</p>
         </div>

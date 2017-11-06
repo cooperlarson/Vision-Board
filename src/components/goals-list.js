@@ -27,7 +27,7 @@ class GoalsList extends Component {
       : isEmpty(goals)
         ? 'Goals list is empty'
         : Object.keys(goals).map((id) => (
-            <GoalItem key={id} goal={goals[id]} />
+            <GoalItem key={id} id={id} goal={goals[id]} />
           ))
     return (
       <section className='goals'>
