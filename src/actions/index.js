@@ -4,17 +4,15 @@ import ActionTypes from '../constants';
 export function fetchGoals() {
   return dispatch => {
     dispatch(getGoalRequestedAction());
-    const goalsRef = database.ref('/goals');
-    for (goal in goals);
-      goalsRef.push({
-        title,
-        description,
-        imgUrl,
-        due
-      })
-
-      dispatch(getGoalFulfilledAction({ title, description, imgUrl, due }));
-    }
+    return database.ref('goals').on('value', snap => {
+      const goalsRef = snap.val();
+      dispatch(getGoalFulfilledAction(goalsRef))
+    })
+    .catch((error) => {
+      console.log(error);
+      dispatch(getGoalRejectedAction());
+    });
+  }
 }
 
 function getGoalRequestedAction() {
@@ -29,9 +27,9 @@ function getGoalRejectedAction() {
   }
 }
 
-function getGoalFulfilledAction({ title, description, imgUrl, due }) {
+function getGoalFulfilledAction({ goalsRef }) {
   return {
     type: ActionTypes.GetGoalFulfilled,
-    invite
+    goalsRef
   };
 }

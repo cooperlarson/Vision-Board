@@ -12,7 +12,8 @@ class GoalsList extends Component {
       title: '',
       description: '',
       imgUrl: '',
-      due: ''
+      due: '',
+      goals: []
     };
   }
 
@@ -23,25 +24,20 @@ class GoalsList extends Component {
 
   render() {
     const { title, description, imgUrl, due } = this.props.goals;
+    const bgImg = {backgroundImage: `url(${imgUrl})`}
     return (
       <section className='goals'>
-        {goals.map((title, description, imgUrl, due) => {
-          const bgImg = {backgroundImage: `url(${goal.imgUrl})`}
-          return (
-            <div key={goal.id} className="col-xs-12 col-sm-6 col-md-4 col-lg-3 goal-box">
+            <div key={id} className="col-xs-12 col-sm-6 col-md-4 col-lg-3 goal-box">
               <div className="goal-item" style={bgImg}>
                 <div className="goal-info">
-                  <i class="fa fa-times-circle-o delete-goal" aria-hidden="true" onClick={() => this.removeItem(goal.id)}></i>
-                  <h3>{goal.title}</h3>
-                  <p>Due: {goal.due}</p>
+                  <i class="fa fa-times-circle-o delete-goal" aria-hidden="true"></i>
+                  <h3>{title}</h3>
+                  <p>Due: {due}</p>
                 </div>
               </div>
             </div>
-          );
-        })
-        }
-      );
-    }
+    );
+  }
       </section>
     );
   }
