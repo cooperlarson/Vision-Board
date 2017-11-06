@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import GoalsReducer from './reducer_goals';
+import { firebaseStateReducer } from 'react-redux-firebase';
 
 const rootReducer = combineReducers({
-  goals: GoalsReducer
+  firebase: firebaseStateReducer
 });
 
 export default rootReducer;

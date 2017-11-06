@@ -1,18 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import createLogger from 'redux-logger';
+import { createStore, compose } from 'redux';
 import './css/index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
+import firebaseConfig from './actions/firebase';
+import { reactReduxFirebase } from 'react-redux-firebase';
 
 import rootReducer from './reducers';
 
-const middleware = [ thunk ];
+const reduxFirebaseConfig = { goalsList: 'goals'}
 
-const store = createStore(rootReducer, applyMiddleware(...middleware))
+// // Add reactReduxFirebase store enhancer
+const createStoreWithFirebase = compose(
+  reactReduxFirebase(firebaseConfig, reduxFirebaseConfig),
+)(createStore)
+
+const initialState = {}
+const store = createStoreWithFirebase(rootReducer, initialState)
 
 ReactDOM.render(
   <Provider store={store}>
