@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ModalForm from './modal';
+import ModalForm from './form/modal';
 
 class ContentHeader extends Component {
   render() {

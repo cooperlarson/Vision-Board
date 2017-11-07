@@ -14,11 +14,29 @@
   padding: 20px 0;
   color: white;
   margin-bottom: 15px;
+  display: block;
 }
 
 .App-title {
   font-size: 1.5em;
   margin-top: -5px;
+  width: 150px;
+}
+
+.nav-list {
+  width: 250px;
+  float: right;
+  margin-top: -30px;
+  display: inline-flex;
+  list-style: none;
+}
+
+.nav-item {
+  color: #fff;
+  width: 50px;
+  margin-left: 20px;
+  cursor: pointer;
+  cursor: hand;
 }
 
 .App-intro {

@@ -1,38 +1,38 @@
 import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
-import Form from './form';
+import SignupForm from './';
 
-class ModalForm extends Component {
+class SignUpModal extends Component {
   //setting initial state
   constructor(props) {
     super(props);
-    this.state = {showModal: false};
+    this.state = {signupModal: false};
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
     }
 
   getInitialState() {
-    return { showModal: false };
+    return { signupModal: false };
   }
 
   close() {
-    this.setState({ showModal: false });
+    this.setState({ signupModal: false });
   }
 
   open() {
-    this.setState({ showModal: true });
+    this.setState({ signupModal: true });
   }
 
   render() {
     return (
       <div>
-      <button className="btn add-new" onClick={this.open}>Add Goal</button>
-      <Modal className="modal-form" show={this.state.showModal} onHide={this.close}>
+      <li className="nav-item" onClick={this.open}>Sign Up</li>
+      <Modal className="modal-signup" show={this.state.signupModal} onHide={this.close}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Goal</Modal.Title>
+          <Modal.Title>Sign Up</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form />
+          <SignupForm />
         </Modal.Body>
         </Modal>
       </div>
@@ -42,4 +42,4 @@ class ModalForm extends Component {
 
 };
 
-export default ModalForm;
+export default SignUpModal;

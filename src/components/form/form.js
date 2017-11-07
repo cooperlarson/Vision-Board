@@ -53,6 +53,6 @@ const wrappedForm = firebaseConnect([
 
 export default connect(
   ({firebase}) => ({
-    goals: dataToJS(firebase, 'goals'),
+    goals: dataToJS(firebase, 'goals')
   })
 )(wrappedForm)

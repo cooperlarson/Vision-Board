@@ -3,7 +3,7 @@ import { createStore, compose } from 'redux';
 import firebaseConfig from './firebase';
 import rootReducer from '../reducers';
 
-const reduxFirebaseConfig = { goalsList: 'goals'}
+const reduxFirebaseConfig = { userProfile: "users" }
 
 // // Add reactReduxFirebase store enhancer
 const createStoreWithFirebase = compose(
@@ -12,5 +12,12 @@ const createStoreWithFirebase = compose(
 
 const initialState = {};
 const store = createStoreWithFirebase(rootReducer, initialState);
+
+if (module.hot) {
+  module.hot.accept('../reducers', () => {
+    const reducers = require('../reducers').default
+    store.replaceReducer(reducers(store.asyncReducers))
+  })
+}
 
 export default store;
