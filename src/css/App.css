@@ -8,6 +8,43 @@
   height: 80px;
 }
 
+.jumbotron.landing-page {
+  background-image: url('https://www.webcore.me/wp-content/uploads/2014/07/success-climb-that-mountain-goal1.jpg');
+  text-align: center;
+  background-size: cover;
+  height: stretch;
+  height: -webkit-stretch;
+  margin-top: -15px;
+}
+
+.landing-page ul {
+  list-style: none;
+  margin: 20px auto;
+  padding: 0;
+}
+
+.landing-page li.nav-item {
+  margin: 0 5px;
+}
+
+.landing-page .nav-item:hover{
+  color: #fff;
+}
+
+.landing-page button {
+  margin: 0 15px;
+}
+
+.modal-dialog {
+  width: 80%;
+  max-width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+  text-align: center;
+}
+
 .App-header {
   background-color: #222;
   height: 50px;
@@ -17,10 +54,21 @@
   display: block;
 }
 
-.App-title {
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+a .App-title {
   font-size: 1.5em;
   margin-top: -5px;
   width: 150px;
+  color: #fff;
+  text-decoration: none;
+}
+
+a .App-title:hover {
+  color: #4fb6ff;
 }
 
 .nav-list {
@@ -37,6 +85,10 @@
   margin-left: 20px;
   cursor: pointer;
   cursor: hand;
+}
+
+.nav-item:hover {
+  color: #4fb6ff
 }
 
 .App-intro {
