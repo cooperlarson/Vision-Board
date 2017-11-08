@@ -6,16 +6,14 @@ import App from './containers/App';
 import LandingPage from './routes/LandingPage';
 import registerServiceWorker from './registerServiceWorker';
 import store from './store';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <div>
-        <Switch>
           <Route path="/Home" component={App}/>
           <Route path="/" component={LandingPage} />
-        </Switch>
     </div>
     </BrowserRouter>
   </Provider>

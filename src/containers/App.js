@@ -3,6 +3,7 @@ import '../css/App.css';
 import ContentHeader from '../components/content-header';
 import GoalsList from '../components/goals-list';
 import Navbar from './navbar';
+import UserIsAuthenticated from '../utils/auth';
 
 class App extends Component {
   render() {
@@ -18,4 +19,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default UserIsAuthenticated(App);

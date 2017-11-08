@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { firebaseConnect } from 'react-redux-firebase';
+import { firebaseConnect, pathToJS } from 'react-redux-firebase';
+import { connect } from 'react-redux';
 import FormLogin from './loginForm';
 
-  class LoginForm extends Component {
+@firebaseConnect()
+@connect(({ firebase }) => ({
+  authError: pathToJS(firebase, 'authError')
+}))
+  export default class LoginForm extends Component {
     static proptypes = {
       firebase: PropTypes.shape({
         login: PropTypes.func.isRequired
@@ -20,5 +25,3 @@ import FormLogin from './loginForm';
   );
 }
 }
-
-export default firebaseConnect()(LoginForm)
