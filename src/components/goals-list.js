@@ -14,8 +14,7 @@ class GoalsList extends Component {
   static propTypes = {
     goals: PropTypes.object,
     firebase: PropTypes.shape({
-      push: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      push: PropTypes.func.isRequired
     })
   }
 

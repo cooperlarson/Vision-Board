@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
-import LoginForm from './loginForm';
+import LoginForm from './';
 
 class LoginModal extends Component {
   //setting initial state

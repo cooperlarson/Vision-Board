@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { firebaseConnect, dataToJS } from 'react-redux-firebase';
+import { firebaseConnect, dataToJS, pathToJS } from 'react-redux-firebase';
 
 class Form extends Component {
   static proptypes = {
     goals: PropTypes.object,
-    firebase: PropTypes.object
+    firebase: PropTypes.object,
+    auth: PropTypes.shape({
+      uid: PropTypes.string
+    })
   }
 
   //handling form submit
 handleSubmit = (e) => {
   e.preventDefault();
+    const { auth } = this.props;
+    if (!auth || !auth.uid) {
+      return this.setState({error: 'You must be logged in'})
+    } else {
 const {title} = this.refs;
 const {imgUrl} = this.refs;
 const {due} = this.refs;
@@ -20,6 +27,7 @@ firebase.push('/goals', { title: title.value, imgUrl: imgUrl.value, due: due.val
 title.value = '';
 imgUrl.value = '';
 due.value = '';
+    }
 }
 
 render() {
@@ -53,6 +61,7 @@ const wrappedForm = firebaseConnect([
 
 export default connect(
   ({firebase}) => ({
-    goals: dataToJS(firebase, 'goals')
+    goals: dataToJS(firebase, 'goals'),
+    auth: pathToJS(firebase, 'auth')
   })
 )(wrappedForm)

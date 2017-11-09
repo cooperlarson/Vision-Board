@@ -3,7 +3,10 @@ import { createStore, compose } from 'redux';
 import firebaseConfig from './firebase';
 import rootReducer from '../reducers';
 
-const reduxFirebaseConfig = { userProfile: "users" }
+const reduxFirebaseConfig = {
+  userProfile: "users",
+  profileParamsToPopulate: [ 'goals:goals' ]
+}
 
 // // Add reactReduxFirebase store enhancer
 const createStoreWithFirebase = compose(

@@ -5,7 +5,11 @@ import { firebase } from 'react-redux-firebase';
 class GoalItem extends Component {
   static propTypes = {
     goal: PropTypes.object,
-    id: PropTypes.string
+    id: PropTypes.string,
+    firebase: PropTypes.shape({
+      remove: PropTypes.func.isRequired,
+      update: PropTypes.func.isRequired
+    })
   }
 
   render() {
@@ -15,6 +19,7 @@ class GoalItem extends Component {
 
     const deleteGoal = (event) => {
       firebase.remove(`/goals/${id}`)
+      firebase.update('goals')
     }
 
     return (

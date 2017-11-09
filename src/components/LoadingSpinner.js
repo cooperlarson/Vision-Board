@@ -1,10 +1,12 @@
-import React from 'react'
-import { Loader } from 'react-loader';
+import React, { Component } from 'react'
+import { ClipLoader } from 'react-spinners';
 
-export const LoadingSpinner = () => (
-    <div>
-      <Loader />
-    </div>
-)
-
-export default LoadingSpinner
+export default class LoadingSpinner extends Component {
+  render() {
+    return (
+      <div className="loading">
+        <ClipLoader size={50} color={'#4fb6ff'} />
+      </div>
+    )
+  }
+}

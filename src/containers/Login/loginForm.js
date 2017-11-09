@@ -7,6 +7,7 @@ import { Checkbox } from 'react-bootstrap';
 const FormLogin = ({ pristine, submitting, handleSubmit }) => (
   <form id="loginForm" className="loginForm" onSubmit={handleSubmit}>
     <div className="form-group">
+    <label>Email</label>
     <Field
       name="email"
       className="form-control"
@@ -14,6 +15,7 @@ const FormLogin = ({ pristine, submitting, handleSubmit }) => (
       validate={[required, validateEmail]}
     />
     </div>
+    <label>Password</label>
     <div className="form-group">
     <Field
       name="password"
@@ -25,7 +27,6 @@ const FormLogin = ({ pristine, submitting, handleSubmit }) => (
     </div>
     <div className="form-group">
       <button
-        primary
         type="submit"
         className="btn btn-submit"
         value="submit"
@@ -35,9 +36,9 @@ const FormLogin = ({ pristine, submitting, handleSubmit }) => (
     </div>
     <div>
       <div>
-        <Checkbox>
+      <Checkbox>
         Remember?
-        </Checkbox>
+      </Checkbox>
       </div>
       <div>
         Forgot Password?
