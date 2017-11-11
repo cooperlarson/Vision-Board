@@ -33,6 +33,11 @@ renderField(field) {
       component={this.renderField}
     />
     <Field
+      name="description"
+      label="Description"
+      component={this.renderField}
+    />
+    <Field
       name="imgUrl"
       label="Image URL"
       component={this.renderField}

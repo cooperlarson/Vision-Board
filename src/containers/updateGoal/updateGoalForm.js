@@ -2,7 +2,18 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 
-class GoalForm extends Component {
+class UpdateGoalForm extends Component {
+
+  componentWillMount () {
+    const { goal } = this.props
+    this.props.initialize({
+      title: goal.title,
+      description: goal.description,
+      imgUrl: goal.imgUrl,
+      due: goal.due
+     });
+  }
+
 renderField(field) {
   const { meta: { touched, error } } = field;
   const className = `form-group ${touched && error ? 'has-danger' : ''}`;
@@ -23,18 +34,26 @@ renderField(field) {
 }
 
   render() {
-    const { handleSubmit } = this.props
+    const { handleSubmit, goal } = this.props
 
     return (
-  <form id="newGoalForm" className="newGoalForm" onSubmit={handleSubmit}>
+  <form id="updateGoalForm" className="updateGoalForm" onSubmit={handleSubmit}>
     <Field
       name="title"
       label="Goal Title"
+      value={goal.title}
+      component={this.renderField}
+    />
+    <Field
+      name="description"
+      label="Description"
+      defaultValue={goal.description}
       component={this.renderField}
     />
     <Field
       name="imgUrl"
       label="Image URL"
+      defaultValue={goal.imgUrl}
       component={this.renderField}
     />
     <label>Due</label>
@@ -51,8 +70,8 @@ renderField(field) {
         type="submit"
         className="btn btn-submit"
         value="submit"
-        form="newGoalForm"
-      >Add Goal</button>
+        form="updateGoalForm"
+      >Update Goal</button>
     </div>
   </form>
     )
@@ -74,5 +93,5 @@ function validate(values) {
 
 export default reduxForm({
   validate,
-  form: 'GoalForm'
-})(GoalForm)
+  form: 'updateGoalForm'
+})(UpdateGoalForm)

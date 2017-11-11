@@ -155,19 +155,15 @@ ul.goals-list {
   margin-left: -15px;
 }
 
-i.fa.delete-goal {
-  position: absolute;
-  left: 15px;
-  top: 2px;
+i.fa-pencil-square-o {
   font-size: 24px;
-  color: rgb(186, 2, 2);
-  opacity: 0;
+  float: left;
   cursor: pointer;
   cursor: hand;
 }
 
-i.fa.delete-goal:hover {
-  opacity: 1;
+.modal-footer .btn-danger {
+  float: left;
 }
 
 .goal-box {
@@ -184,12 +180,13 @@ i.fa.delete-goal:hover {
   background-position: center;
   border-radius: 7.5px;
   margin-bottom: 20px;
+  box-shadow: 4px 5px 14px;
 }
 
 .goal-info {
   background-color: rgba(0, 0, 0, 0.2);
   color: #fff;
-  height: 100%;
+  height: 200px;
   margin-top: -20px;
   border-radius: 7.5px;
   cursor: pointer;
@@ -201,7 +198,7 @@ i.fa.delete-goal:hover {
 }
 
 .goal-info h3 {
-  padding-top: 50px;
+  padding-top: 80px;
   font-size: 20px;
 }
 
