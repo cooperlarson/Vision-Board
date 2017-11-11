@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ModalForm from './form/modal';
+import NewGoalModal from '../containers/newGoal/newGoalModal';
 
 class ContentHeader extends Component {
   render() {
@@ -10,7 +10,7 @@ class ContentHeader extends Component {
         <h3>All Goals</h3>
       </div>
       <div className="col-xs-4">
-        <ModalForm />
+        <NewGoalModal />
       </div>
     </section>
     );

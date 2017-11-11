@@ -1,6 +1,6 @@
 import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect'
 import locationHelperBuilder from 'redux-auth-wrapper/history4/locationHelper';
-import { firebase, pathToJS } from 'react-redux-firebase';
+import { pathToJS } from 'react-redux-firebase';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const locationHelper = locationHelperBuilder({});

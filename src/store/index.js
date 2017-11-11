@@ -5,7 +5,7 @@ import rootReducer from '../reducers';
 
 const reduxFirebaseConfig = {
   userProfile: "users",
-  profileParamsToPopulate: [ 'goals:goals' ]
+  profileParamsToPopulate: [ 'goals:users' ]
 }
 
 // // Add reactReduxFirebase store enhancer

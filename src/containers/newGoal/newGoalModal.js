@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
-import Form from './form';
+import NewGoalForm from './';
 
-class ModalForm extends Component {
+class NewGoalModal extends Component {
   //setting initial state
   constructor(props) {
     super(props);
@@ -26,13 +26,13 @@ class ModalForm extends Component {
   render() {
     return (
       <div>
-      <button className="btn add-new" onClick={this.open}>Add Goal</button>
+      <button className="btn btn-primary add-new" onClick={this.open}>Add Goal</button>
       <Modal className="modal-form" show={this.state.showModal} onHide={this.close}>
         <Modal.Header closeButton>
           <Modal.Title>Add New Goal</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form />
+          <NewGoalForm />
         </Modal.Body>
         </Modal>
       </div>
@@ -42,4 +42,4 @@ class ModalForm extends Component {
 
 };
 
-export default ModalForm;
+export default NewGoalModal;

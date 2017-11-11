@@ -37,8 +37,8 @@ class LandingPage extends Component {
           <h1>Vision Board</h1>
           <h3>Visualize & Achieve Your Goals</h3>
           <ul>
-            <button className="btn btn-submit"><SignUpModal /></button>
-            <button className="btn btn-submit"><LoginModal /></button>
+            <button className="btn btn-primary"><SignUpModal /></button>
+            <button className="btn btn-primary"><LoginModal /></button>
           </ul>
         </div>
       </div>

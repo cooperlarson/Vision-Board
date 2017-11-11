@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 import ContentHeader from '../components/content-header';
-import GoalsList from '../components/goals-list';
-import Navbar from './navbar';
+import Goals from '../containers/goals/goals';
+import Navbar from '../containers/navbar';
 import { UserIsAuthenticated } from '../utils/auth';
 
 @UserIsAuthenticated
@@ -14,7 +14,7 @@ export default class App extends Component {
         <Navbar />
         <div className="container-fluid">
           <ContentHeader />
-          <GoalsList />
+          <Goals />
         </div>
       </div>
     );
