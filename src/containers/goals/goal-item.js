@@ -57,10 +57,6 @@ class GoalItem extends Component {
       firebase.remove(`/goals/${auth.uid}/${id}`)
     }
 
-    const updateGoal = () => {
-      firebase.update(`/goals/${auth.uid}/${id}`)
-    }
-
     return (
       <div key={id} id={id} className="col-xs-12 col-sm-6 col-md-4 col-lg-3 goal-box">
       <div className="goal-item" style={goalBgImg}>
@@ -71,7 +67,6 @@ class GoalItem extends Component {
       </div>
       <div>
       <Modal className="goalItemModal" show={this.state.showGoalModal} onHide={this.close}>
-      <form id="updateGoalForm" className="updateGoalForm" onSubmit={updateGoal}>
         <Modal.Header closeButton>
           <Modal.Title>{goal.title}
           </Modal.Title>
@@ -82,7 +77,6 @@ class GoalItem extends Component {
         <Modal.Footer>
           <button className="btn btn-danger" onClick={deleteGoal}>Delete</button>
         </Modal.Footer>
-        </form>
       </Modal>
       </div>
       </div>
