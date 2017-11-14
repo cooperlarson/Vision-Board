@@ -53,7 +53,7 @@ render() {
 
   return (
   <div>
-    <i class="fa fa-pencil-square-o" onClick={this.open} aria-hidden="true"></i>
+    <i className="fa fa-pencil-square-o" onClick={this.open} aria-hidden="true"></i>
 <Modal className="UpdateGoalModal" show={this.state.updateGoalModal} onHide={this.close}>
 <Modal.Header closeButton>
   <Modal.Title>Edit: {goal.title}</Modal.Title>

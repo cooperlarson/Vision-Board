@@ -10,7 +10,8 @@ class UpdateGoalForm extends Component {
       title: goal.title,
       description: goal.description,
       imgUrl: goal.imgUrl,
-      due: goal.due
+      monthDue: goal.monthDue,
+      yearDue: goal.yearDue
      });
   }
 
@@ -47,22 +48,50 @@ renderField(field) {
     <Field
       name="description"
       label="Description"
-      defaultValue={goal.description}
       component={this.renderField}
     />
     <Field
       name="imgUrl"
       label="Image URL"
-      defaultValue={goal.imgUrl}
       component={this.renderField}
     />
-    <label>Due</label>
     <div className="form-group">
+    <div className="col-xs-12">
+    <label>Due:</label>
+    </div>
+    </div>
+    <div className="col-xs-6 form-group">
+    <label>Month</label>
     <Field
-      name="due"
+      name="monthDue"
       className="form-control"
+      component="select"
+    >
+      <option />
+      <option value="0">January</option>
+      <option value="1">February</option>
+      <option value="2">March</option>
+      <option value="3">April</option>
+      <option value="4">May</option>
+      <option value="5">June</option>
+      <option value="6">July</option>
+      <option value="7">August</option>
+      <option value="8">September</option>
+      <option value="9">October</option>
+      <option value="10">November</option>
+      <option value="11">December</option>
+    </Field>
+    </div>
+    <div className="col-xs-6 form-group">
+    <label>Year</label>
+    <Field
+      name="yearDue"
+      className="form-control"
+      placeholder="YYYY"
       component="input"
-      type="month"
+      type="number"
+      min="2017"
+      max="3000"
     />
     </div>
     <div className="form-group">

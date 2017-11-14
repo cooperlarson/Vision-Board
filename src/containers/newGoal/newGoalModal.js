@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
-import NewGoalForm from './';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { firebaseConnect, dataToJS, pathToJS } from 'react-redux-firebase';
+import NewGoalForm from './newGoalForm';
+
+@firebaseConnect()
+@connect(({ firebase }) => ({
+  goals: dataToJS(firebase, 'goals'),
+  auth: pathToJS(firebase, 'auth'),
+}))
 
 class NewGoalModal extends Component {
   //setting initial state
@@ -10,6 +19,24 @@ class NewGoalModal extends Component {
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
     }
+
+  static proptypes = {
+    goals: PropTypes.object,
+    firebase: PropTypes.object,
+    auth: PropTypes.shape({
+      uid: PropTypes.string
+    })
+  }
+
+    //handling form submit
+  handleAdd = (newGoal) => {
+  const { firebase } = this.props;
+  const userId = firebase.auth().currentUser.uid;
+  firebase.push(`goals/${userId}`, newGoal)
+  .then(() => {
+    this.close()
+  })
+  }
 
   getInitialState() {
     return { showModal: false };
@@ -32,7 +59,7 @@ class NewGoalModal extends Component {
           <Modal.Title>Add New Goal</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <NewGoalForm />
+          <NewGoalForm onSubmit={this.handleAdd} />
         </Modal.Body>
         </Modal>
       </div>

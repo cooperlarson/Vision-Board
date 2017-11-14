@@ -24,6 +24,7 @@ handleAdd = (newGoal) => {
 const { firebase } = this.props;
 const userId = firebase.auth().currentUser.uid;
 firebase.push(`goals/${userId}`, newGoal)
+.then(() => this.close)
 }
 
   render() {

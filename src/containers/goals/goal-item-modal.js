@@ -3,6 +3,7 @@ import { Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { firebaseConnect, dataToJS } from 'react-redux-firebase';
 import UpdateGoalModal from '../updateGoal/updateGoalModal';
+import countdown from 'countdown';
 
 @firebaseConnect(
   ({ auth }) => ([
@@ -40,6 +41,10 @@ export default class GoalItemModal extends Component {
 render() {
   const { auth, id, goal } = this.props
 
+  const CountDownOptions = (countdown.YEARS | countdown.MONTHS | countdown.DAYS | countdown.HOURS);
+
+  const CountDown = countdown( new Date(goal.yearDue, goal.monthDue), null, CountDownOptions ).toString();
+
   return (
   <div>
   <div className="goal-info" onClick={this.open}>
@@ -49,14 +54,16 @@ render() {
 <Modal.Header closeButton>
 <UpdateGoalModal auth={auth} id={id} goal={goal} />
   <Modal.Title>
-  {goal.title}<br />
-  {goal.due}
+  {goal.title}
   </Modal.Title>
 </Modal.Header>
 <Modal.Body>
-  {goal.description}
+  <div class="goal-description">{goal.description}</div>
   <img className="img-responsive" alt="" src={goal.imgUrl} />
 </Modal.Body>
+<Modal.Footer>
+<span className="goal-due-text">Due:</span> {CountDown}
+</Modal.Footer>
 </Modal>
 </div>
   )

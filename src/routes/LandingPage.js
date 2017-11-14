@@ -31,9 +31,9 @@ class LandingPage extends Component {
     }
     if (isLoaded(auth) && isEmpty(auth)) {
       return (
-        <div>
+        <div className="landing-page">
         <Navbar />
-        <div className="jumbotron landing-page">
+        <div className="jumbotron">
           <h1>Vision Board</h1>
           <h3>Visualize & Achieve Your Goals</h3>
           <ul>
@@ -57,18 +57,7 @@ class LandingPage extends Component {
       )
     } else
     return (
-      <div>
-        <Navbar />
-        <div className="jumbotron landing-page">
-          <h1>Vision Board</h1>
-          <h3>Achieve your goals with the power of visualization</h3>
-          <Link to={'/Home'}><button className="btn btn-submit">Get Started</button></Link>
-          <ul>
-            <button className="btn btn-submit"><SignUpModal /></button>
-            <button className="btn btn-submit"><LoginModal /></button>
-          </ul>
-        </div>
-      </div>
+      <div>Please try again later</div>
     );
   }
 }

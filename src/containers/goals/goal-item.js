@@ -37,7 +37,7 @@ class GoalItem extends Component {
     const goalBgImg = {backgroundImage: `url(${goal.imgUrl})`};
 
     return (
-      <div key={id} id={id} className="col-xs-12 col-sm-6 col-md-4 col-lg-3 goal-box">
+      <div key={id} id={id} className="col-xs-12 col-sm-6 col-lg-4 goal-box">
       <div className="goal-item" style={goalBgImg}>
       <GoalItemModal auth={auth} id={id} goal={goal} />
       </div>

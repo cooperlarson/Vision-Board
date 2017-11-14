@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 
-class GoalForm extends Component {
+class NewGoalForm extends Component {
 renderField(field) {
   const { meta: { touched, error } } = field;
   const className = `form-group ${touched && error ? 'has-danger' : ''}`;
@@ -42,13 +42,43 @@ renderField(field) {
       label="Image URL"
       component={this.renderField}
     />
-    <label>Due</label>
     <div className="form-group">
+    <div className="col-xs-12">
+    <label>Due:</label>
+    </div>
+    </div>
+    <div className="col-xs-6 form-group">
+    <label>Month</label>
     <Field
-      name="due"
+      name="monthDue"
       className="form-control"
+      component="select"
+    >
+      <option />
+      <option value="0">January</option>
+      <option value="1">February</option>
+      <option value="2">March</option>
+      <option value="3">April</option>
+      <option value="4">May</option>
+      <option value="5">June</option>
+      <option value="6">July</option>
+      <option value="7">August</option>
+      <option value="8">September</option>
+      <option value="9">October</option>
+      <option value="10">November</option>
+      <option value="11">December</option>
+    </Field>
+    </div>
+    <div className="col-xs-6 form-group">
+    <label>Year</label>
+    <Field
+      name="yearDue"
+      className="form-control"
+      placeholder="YYYY"
       component="input"
-      type="month"
+      type="number"
+      min="2017"
+      max="3000"
     />
     </div>
     <div className="form-group">
@@ -79,6 +109,6 @@ function validate(values) {
 
 export default reduxForm({
   validate,
-  form: 'GoalForm'
-})(GoalForm)
+  form: 'NewGoalForm'
+})(NewGoalForm)
 
