@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { firebaseConnect, isLoaded, isEmpty, pathToJS } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
-import Navbar from '../containers/navbar';
+import Navbar from '../containers/navbar/navbar';
+import NavbarAuth from '../containers/navbar/navbar_auth';
 import SignUpModal from '../containers/signup/signup-modal';
 import LoginModal from '../containers/Login/loginModal';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -47,7 +48,7 @@ class LandingPage extends Component {
     if (isLoaded(auth) && !isEmpty(auth)) {
       return (
         <div>
-        <Navbar />
+        <NavbarAuth auth={this.props.auth} />
         <div className="jumbotron landing-page">
           <h1>Vision Board</h1>
           <h3>Achieve your goals with the power of visualization</h3>

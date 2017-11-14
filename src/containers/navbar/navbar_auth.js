@@ -3,19 +3,31 @@ import { Link } from 'react-router-dom';
 import SignUpModal from '../signup/signup-modal';
 import LoginModal from '../Login/loginModal';
 import { connect } from 'react-redux';
-import { firebaseConnect, pathToJS, isLoaded, isEmpty } from 'react-redux-firebase';
+import { firebaseConnect, dataToJS, isLoaded, isEmpty } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
+import NewGoalModal from '../newGoal/newGoalModal';
 
-@firebaseConnect()
-@connect(({ firebase }) => ({
-  auth: pathToJS(firebase, 'auth')
-}))
+@firebaseConnect(
+  ({ auth }) => ([
+    // Get auth from props
+    `/users/${auth.uid}`
+  ])
+)
+@connect(
+  ({ firebase }, { auth }) => ({
+     // pathToJS(firebase, 'auth') gets from redux, but auth is already a prop
+     avatar: dataToJS(firebase, `/users/${auth.uid}/avatarUrl`),
+     displayName: dataToJS(firebase, `/users/${auth.uid}/displayName`)
+  })
+)
 
-class Navbar extends Component {
+class NavbarAuth extends Component {
   static propTypes = {
     auth: PropTypes.shape({
       uid: PropTypes.string
-    })
+    }),
+    avatar: PropTypes.string,
+    displayName: PropTypes.string
   }
 
   handleLogout = () => {
@@ -23,7 +35,7 @@ class Navbar extends Component {
   }
 
   render() {
-    const { auth } = this.props
+    const { auth, avatar, displayName } = this.props
 
       if (!isLoaded(auth)) {
         return (
@@ -49,7 +61,10 @@ class Navbar extends Component {
        return (
         <header className="App-header">
         <Link to={'/'}><h1 className="App-title">Vision Board</h1></Link>
+        <NewGoalModal />
         <ul className="nav-list">
+          <div className="user-profile">Welcome,<br/>{displayName}</div>
+          <img className="profile-avatar" alt="user" src={avatar} />
           <li className="nav-item" onClick={this.handleLogout}>Logout</li>
           </ul>
       </header>
@@ -66,4 +81,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default NavbarAuth;
