@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { firebaseConnect, pathToJS } from 'react-redux-firebase';
 import { Modal } from 'react-bootstrap';
 import LoginForm from './loginForm';
+import ProviderLogin from './Provider';
+
+@firebaseConnect()
+@connect(({ firebase }) => ({
+  authError: pathToJS(firebase, 'authError')
+}))
+
 
 class LoginModal extends Component {
   //setting initial state
@@ -24,6 +33,11 @@ class LoginModal extends Component {
   }
 
   render() {
+
+    const handleLogin = loginData => {
+      this.props.firebase.login(loginData)
+    }
+
     return (
       <div>
       <li className="nav-item" onClick={this.open}>Login</li>
@@ -32,7 +46,8 @@ class LoginModal extends Component {
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <LoginForm />
+          <LoginForm onSubmit={handleLogin} />
+          <ProviderLogin />
         </Modal.Body>
         </Modal>
       </div>

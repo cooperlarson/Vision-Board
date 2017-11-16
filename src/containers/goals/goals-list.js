@@ -39,7 +39,7 @@ export default class GoalsList extends Component {
     const goalsList = !isLoaded(goals)
       ? 'Loading'
       : isEmpty(goals)
-        ? 'Goals list is empty'
+        ? 'Vision Board is empty'
         : Object.keys(goals).map((id) => (
             <GoalItem auth={this.props.auth} key={id} id={id} goal={goals[id]} />
           ))

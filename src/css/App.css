@@ -9,7 +9,8 @@
   background: -ms-linear-gradient(top, rgba(40,178,217,1) 0%, rgba(13,46,56,1) 100%);
   background: linear-gradient(to bottom, rgba(40,178,217,1) 0%, rgba(13,46,56,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#28b2d9', endColorstr='#0d2e38', GradientType=0 );
-  padding-bottom: 20px
+  padding-bottom: 20px;
+  min-height: stretch;
 }
 
 .App-logo {
@@ -94,6 +95,39 @@
   z-index: 100;
 }
 
+.success_message {
+  color: green;
+  margin-bottom: 10px;
+}
+
+.error_message {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.forgot-pass-text {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.forgot-pass-text:hover {
+  color: red;
+}
+
+.user-nav {
+  display: flex;
+}
+
+.reset-pass-text {
+  color: #3F51B5;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.reset-pass-text:hover {
+  color: rgb(5, 43, 230);
+}
+
 img.profile-avatar {
   height: 40px;
   height: 40px;
@@ -101,11 +135,33 @@ img.profile-avatar {
   border-radius: 50%;
   margin-top: -12.5px;
   margin-left: 10px;
+  cursor: pointer;
+  cursor: hand;
 }
 
-.user-profile {
+.user-profile-name {
   margin-left: 20px;
   margin-top: -10px;
+  text-align: left;
+}
+
+.display-name:hover {
+  color: #00eeff;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.profile-avatar-lg {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.user-profile-body div {
+  font-size: 16px;
+  margin: 0px 10px 10px 10px;
   text-align: left;
 }
 
@@ -216,6 +272,15 @@ i.fa-pencil-square-o:hover {
   float: left;
 }
 
+.btn.delete-account {
+  margin: 0 auto;
+  float: none;
+}
+
+.goals {
+  color: #e1e1e1;
+}
+
 .goal-box {
   padding-left: 10px;
   padding-right: 10px;
@@ -230,7 +295,7 @@ i.fa-pencil-square-o:hover {
   background-position: center;
   border-radius: 7.5px;
   margin-bottom: 20px;
-  box-shadow: 4px 5px 14px;
+  box-shadow: 4px 5px 14px black;
 }
 
 .goal-info {

@@ -36,7 +36,7 @@ let FormSignup = ({ pristine, submitting, handleSubmit }) => (
                 />
                 </div>
                 <button
-                className="btn btn-submit"
+                className="btn btn-primary"
                 type="submit"
                 form="signupForm"
                 value="Submit">Sign Up</button>

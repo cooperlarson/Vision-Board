@@ -53,10 +53,10 @@ class NewGoalModal extends Component {
   render() {
     return (
       <div>
-      <button className="btn btn-primary add-new" onClick={this.open}>Add Goal</button>
+      <button className="btn btn-primary add-new" onClick={this.open}>Add Item</button>
       <Modal className="modal-form" show={this.state.showModal} onHide={this.close}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Goal</Modal.Title>
+          <Modal.Title>Add New Item</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <NewGoalForm onSubmit={this.handleAdd} />

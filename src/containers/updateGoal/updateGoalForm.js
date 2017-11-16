@@ -35,14 +35,13 @@ renderField(field) {
 }
 
   render() {
-    const { handleSubmit, goal } = this.props
+    const { handleSubmit } = this.props
 
     return (
   <form id="updateGoalForm" className="updateGoalForm" onSubmit={handleSubmit}>
     <Field
       name="title"
       label="Goal Title"
-      value={goal.title}
       component={this.renderField}
     />
     <Field
@@ -97,7 +96,7 @@ renderField(field) {
     <div className="form-group">
       <button
         type="submit"
-        className="btn btn-submit"
+        className="btn btn-primary"
         value="submit"
         form="updateGoalForm"
       >Update Goal</button>

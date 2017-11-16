@@ -1,66 +1,45 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { firebaseConnect, pathToJS } from 'react-redux-firebase';
-import { required, validateEmail } from '../../utils/form';
 import { Field, reduxForm } from 'redux-form';
-import { Checkbox } from 'react-bootstrap';
-import GoogleButton from 'react-google-button';
-import FacebookLogin from 'react-facebook-login';
 
-@firebaseConnect()
-@connect(({ firebase }) => ({
-  authError: pathToJS(firebase, 'authError')
-}))
 class LoginForm extends Component {
-  static proptypes = {
-    firebase: PropTypes.shape({
-      login: PropTypes.func.isRequired
-    })
-  }
 
-  handleLogin = loginData => {
-    return this.props.firebase.login(loginData)
-  }
+  renderField(field) {
+    const { meta: { touched, error } } = field;
+    const className = `form-group ${touched && error ? 'has-danger' : ''}`;
 
-  googleLogin = loginData => {
-    return this.props.firebase
-      .login({ provider: 'google' })
-      .then(() => {
-        // this is where you can redirect to another route
-      })
-  }
-
-  facebookLogin = loginData => {
-    return this.props.firebase
-      .login({ provider: 'facebook' })
-      .then(() => {
-        // this is where you can redirect to another route
-      })
+    return (
+      <div className={className}>
+        <label>{field.label}</label>
+        <input
+          className="form-control"
+          type={field.type}
+          {...field.input}
+        />
+        <div className="text-help">
+          {touched ? error : ''}
+        </div>
+      </div>
+    );
   }
 
   render() {
+    const { handleSubmit } = this.props
+
     return (
-  <form id="loginForm" className="loginForm" onSubmit={this.handleLogin}>
-    <div className="form-group">
-    <label>Email</label>
+  <form id="loginForm" className="loginForm" onSubmit={handleSubmit}>
     <Field
       name="email"
-      className="form-control"
-      component="input"
-      validate={[required, validateEmail]}
+      label="Email"
+      type="text"
+      component={this.renderField}
     />
-    </div>
-    <label>Password</label>
-    <div className="form-group">
     <Field
       name="password"
-      className="form-control"
-      component="input"
+      label="Password"
       type="password"
-      validate={required}
+      component={this.renderField}
+
     />
-    </div>
     <div className="form-group">
       <button
         type="submit"
@@ -69,36 +48,25 @@ class LoginForm extends Component {
         form="loginForm"
       >Login</button>
     </div>
-    <div>
-      <div>
-        <p>Or</p>
-      </div>
-      <div>
-        <FacebookLogin
-          appId="144263412864280"
-          autoLoad={false}
-          fields="name, email, picture"
-          onClick={this.facebookLogin}>
-          Login via Facebook
-        </FacebookLogin>
-      </div>
-      <div className="social-login">
-        <GoogleButton onClick={this.googleLogin} />
-      </div>
-      <div>
-      <Checkbox>
-        Remember?
-      </Checkbox>
-      </div>
-      <div>
-        Forgot Password?
-      </div>
-    </div>
-  </form>
+    </form>
     )
   }
 }
 
+function validate(values) {
+  const errors = {};
+
+  if (!values.email) {
+    errors.email = "Please enter a valid email";
+  }
+  if (!values.password) {
+    errors.password = "Please enter your password"
+  }
+
+  return errors;
+}
+
 export default reduxForm({
+  validate,
   form: 'loginForm'
 })(LoginForm)

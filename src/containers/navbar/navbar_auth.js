@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { firebaseConnect, dataToJS, isLoaded, isEmpty } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 import NewGoalModal from '../newGoal/newGoalModal';
+import UserProfileModal from '../account/accountModal';
 
 @firebaseConnect(
   ({ auth }) => ([
@@ -16,8 +17,7 @@ import NewGoalModal from '../newGoal/newGoalModal';
 @connect(
   ({ firebase }, { auth }) => ({
      // pathToJS(firebase, 'auth') gets from redux, but auth is already a prop
-     avatar: dataToJS(firebase, `/users/${auth.uid}/avatarUrl`),
-     displayName: dataToJS(firebase, `/users/${auth.uid}/displayName`)
+     avatar: dataToJS(firebase, `/users/${auth.uid}/avatarUrl`)
   })
 )
 
@@ -26,8 +26,7 @@ class NavbarAuth extends Component {
     auth: PropTypes.shape({
       uid: PropTypes.string
     }),
-    avatar: PropTypes.string,
-    displayName: PropTypes.string
+    avatar: PropTypes.string
   }
 
   handleLogout = () => {
@@ -35,7 +34,7 @@ class NavbarAuth extends Component {
   }
 
   render() {
-    const { auth, avatar, displayName } = this.props
+    const { auth } = this.props
 
       if (!isLoaded(auth)) {
         return (
@@ -63,8 +62,7 @@ class NavbarAuth extends Component {
         <Link to={'/'}><h1 className="App-title">Vision Board</h1></Link>
         <NewGoalModal />
         <ul className="nav-list">
-          <div className="user-profile">Welcome,<br/>{displayName}</div>
-          <img className="profile-avatar" alt="user" src={avatar} />
+          <UserProfileModal auth={auth} />
           <li className="nav-item" onClick={this.handleLogout}>Logout</li>
           </ul>
       </header>
