@@ -56,14 +56,12 @@ render() {
     <i className="fa fa-pencil-square-o" onClick={this.open} aria-hidden="true"></i>
 <Modal className="UpdateGoalModal" show={this.state.updateGoalModal} onHide={this.close}>
 <Modal.Header closeButton>
+  <i class="fa fa-trash-o" onClick={deleteGoal} aria-hidden="true"></i>
   <Modal.Title>Edit: {goal.title}</Modal.Title>
 </Modal.Header>
 <Modal.Body>
   <UpdateGoalForm goal={goal} onSubmit={updateGoal} />
 </Modal.Body>
-<Modal.Footer>
-<button className="btn btn-danger" onClick={deleteGoal}>Delete</button>
-</Modal.Footer>
 </Modal>
 </div>
   )
