@@ -84,7 +84,7 @@ renderField(field) {
     <div className="form-group">
       <button
         type="submit"
-        className="btn btn-submit"
+        className="btn btn-primary"
         value="submit"
         form="newGoalForm"
       >Add Goal</button>

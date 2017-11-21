@@ -24,7 +24,7 @@ render() {
   const { firebase } = this.props
 
   const googleLogin = loginData => {
-    firebase.login({ provider: 'google' })
+      firebase.login({ provider: 'google', type: 'popup' })
   }
 
   const facebookLogin = loginData => {

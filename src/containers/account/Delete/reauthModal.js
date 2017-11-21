@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { firebaseConnect, pathToJS } from 'react-redux-firebase';
+import { firebaseConnect, pathToJS, dataToJS } from 'react-redux-firebase';
 import { Modal } from 'react-bootstrap';
 import LoginForm from '../../Login/loginForm';
 import ProviderLogin from '../../Login/Provider';
 
-@firebaseConnect()
-@connect(({ firebase }) => ({
-  authError: pathToJS(firebase, 'authError')
-}))
+@firebaseConnect(
+  ({ auth }) => ([
+    // Get auth from props
+    `/users/${auth.uid}`
+  ])
+)
+@connect(
+  ({ firebase }, { auth }) => ({
+     // pathToJS(firebase, 'auth') gets from redux, but auth is already a prop
+     user: dataToJS(firebase, `/users/${auth.uid}`),
+     authError: pathToJS(firebase, 'authError')
+  })
+)
 
 
 class ReauthModal extends Component {
@@ -34,10 +43,12 @@ class ReauthModal extends Component {
 
   render() {
     const deleteAccount = removeAccount => {
-      const { firebase } = this.props;
+      const { firebase, auth } = this.props;
       let user = firebase.auth().currentUser;
       firebase.login(removeAccount);
       user.delete();
+      firebase.remove(`/users/${auth.uid}`);
+      firebase.remove(`/goals/${auth.uid}`);
     }
 
     return (

@@ -62,11 +62,19 @@
   font-size: 24px;
 }
 
+.landing-page .nav-list {
+  margin-top: -35px;
+}
+
+.landing-page .nav-item {
+  margin-left: 30px;
+}
+
 .landing-page .jumbotron li.nav-item {
   margin: 0 5px;
 }
 
-.landing-page .nav-item:hover{
+.landing-page .btn .nav-item:hover{
   color: #fff;
 }
 
@@ -208,6 +216,15 @@ a .App-title:hover {
   margin-top: -1px;
   cursor: pointer;
   cursor: hand;
+}
+
+.btn.get-started {
+  font-size: 18px;
+  background-color: rgb(1, 158, 225);
+}
+
+.btn.get-started:hover {
+  background-color: rgb(0, 137, 187);
 }
 
 .social-login {

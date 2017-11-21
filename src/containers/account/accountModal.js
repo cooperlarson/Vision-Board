@@ -3,7 +3,7 @@ import { Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { firebaseConnect, dataToJS } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
-import NewPasswordModal from './password/emailPassModal';
+import NewPasswordModal from './Password/emailPassModal';
 import UpdateAccountModal from './Update/updateAccountModal';
 
 @firebaseConnect(
@@ -54,7 +54,7 @@ render() {
 
   return (
 <div className="user-nav">
-<div className="user-profile-name">Welcome,<br/><span className="display-name" onClick={this.open}>{displayName ? displayName : username}</span></div>
+<div className="user-profile-name">Welcome,<br/><span className="display-name" onClick={this.open}>{displayName ? displayName : username ? username : 'User'}</span></div>
 <img className="profile-avatar" alt="user" onClick={this.open} src={avatar ? avatar : 'http://res.cloudinary.com/ddddyraui/image/upload/v1510783413/avatar-default_tzstp0.png'} />
 <Modal className="UserProfileModal" show={this.state.showProfileModal} onHide={this.close}>
 <Modal.Header closeButton>

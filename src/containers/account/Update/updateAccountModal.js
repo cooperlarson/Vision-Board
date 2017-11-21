@@ -58,7 +58,7 @@ render() {
   <UpdateAccountForm user={this.props.user} onSubmit={updateAccount} />
 </Modal.Body>
 <Modal.Footer>
-    <ReauthModal />
+    <ReauthModal auth={this.props.auth} />
 </Modal.Footer>
 </Modal>
 </div>

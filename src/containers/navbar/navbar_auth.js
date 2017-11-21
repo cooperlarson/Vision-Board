@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import SignUpModal from '../signup/signup-modal';
-import LoginModal from '../Login/loginModal';
 import { connect } from 'react-redux';
-import { firebaseConnect, dataToJS, isLoaded, isEmpty } from 'react-redux-firebase';
+import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 import NewGoalModal from '../newGoal/newGoalModal';
 import UserProfileModal from '../account/accountModal';
@@ -15,26 +14,29 @@ import UserProfileModal from '../account/accountModal';
   ])
 )
 @connect(
-  ({ firebase }, { auth }) => ({
-     // pathToJS(firebase, 'auth') gets from redux, but auth is already a prop
-     avatar: dataToJS(firebase, `/users/${auth.uid}/avatarUrl`)
-  })
+  ({ firebase }, { auth }) => ({})
 )
 
-class NavbarAuth extends Component {
+export default class NavbarAuth extends Component {
   static propTypes = {
     auth: PropTypes.shape({
       uid: PropTypes.string
-    }),
-    avatar: PropTypes.string
+    })
   }
 
   handleLogout = () => {
-    this.props.firebase.logout()
+    const { firebase, auth } = this.props;
+    firebase.logout()
+    if (auth.isAnonymous) {
+      firebase.auth().currentUser.delete();
+      firebase.remove(`/goals/${auth.uid}`);
+    }
   }
 
   render() {
     const { auth } = this.props
+
+    const isAnonymous = auth.isAnonymous;
 
       if (!isLoaded(auth)) {
         return (
@@ -43,22 +45,9 @@ class NavbarAuth extends Component {
           </div>
         )
       }
-
-      if (isLoaded(auth) && isEmpty(auth)) {
-        return (
-        <header className="App-header">
-        <Link to={'/'}><h1 className="App-title">Vision Board</h1></Link>
-        <ul className="nav-list">
-          <SignUpModal />
-          <LoginModal />
-        </ul>
-      </header>
-        )
-      }
-
-     if (isLoaded(auth) && !isEmpty(auth)) {
+     if (isLoaded(auth) && !isEmpty(auth) && !isAnonymous) {
        return (
-        <header className="App-header">
+      <header className="App-header">
         <Link to={'/'}><h1 className="App-title">Vision Board</h1></Link>
         <NewGoalModal />
         <ul className="nav-list">
@@ -67,16 +56,19 @@ class NavbarAuth extends Component {
           </ul>
       </header>
        )
-    } else
-    return (
+    }
+    if (isLoaded(auth) && !isEmpty(auth) && isAnonymous) {
+      return (
       <header className="App-header">
         <Link to={'/'}><h1 className="App-title">Vision Board</h1></Link>
+        <NewGoalModal />
         <ul className="nav-list">
-          <li>error</li>
+          <SignUpModal />
+          <UserProfileModal auth={auth} />
+          <li className="nav-item" onClick={this.handleLogout}>Logout</li>
           </ul>
       </header>
-    );
+      )
+    }
   }
 }
-
-export default NavbarAuth;

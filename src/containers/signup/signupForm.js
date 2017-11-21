@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { required, validateEmail } from '../../utils/form';
 import { Field, reduxForm } from 'redux-form';
 
-let FormSignup = ({ pristine, submitting, handleSubmit }) => (
+let SignupForm = ({ pristine, submitting, handleSubmit }) => (
 <form id="signupForm" className="signupForm" onSubmit={handleSubmit}>
                  <div className="form-group">
                  <label>Username</label>
@@ -43,14 +43,14 @@ let FormSignup = ({ pristine, submitting, handleSubmit }) => (
   </form>
 )
 
-FormSignup.propTypes = {
+SignupForm.propTypes = {
   pristine: PropTypes.bool.isRequired, // added by redux-form
   submitting: PropTypes.bool.isRequired, // added by redux-form
   handleSubmit: PropTypes.func.isRequired // added by redux-form
 }
 
-FormSignup = reduxForm({
+SignupForm = reduxForm({
   form: 'signupForm'
-})(FormSignup)
+})(SignupForm)
 
-export default FormSignup;
+export default SignupForm;
