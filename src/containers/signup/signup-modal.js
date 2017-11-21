@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import SignupForm from './signupForm';
 import GoogleButton from 'react-google-button';
 import FacebookLogin from 'react-facebook-login';
-import ForgotPasswordModal from '../Login/emailPassword/emailPasswordModal';
 
 @firebaseConnect()
 @connect(({ firebase }) => ({
