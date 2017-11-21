@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { firebaseConnect, dataToJS } from 'react-redux-firebase';
 import UpdateGoalModal from '../updateGoal/updateGoalModal';
 import countdown from 'countdown';
-import '../../css/awesome-bootstrap-checkbox.css';
 
 @firebaseConnect(
   ({ auth }) => ([
@@ -40,29 +39,7 @@ export default class GoalItemModal extends Component {
   }
 
 render() {
-  const { firebase, auth, id, goal } = this.props;
-
-  const isDone = () => {
-    if (goal.done === true) {
-      return (
-        {done: false}
-      );
-    }
-    if (goal.done === false || null) {
-      return (
-        {done: true}
-      );
-    }
-  }
-
-  const toggleDone = (done) => {
-    if (!goal.done) {
-      firebase.uniqueSet(`goals/${auth.uid}/${id}/done`, true)
-    }
-    if (goal.done) {
-      firebase.update(`goals/${auth.uid}/${id}`, isDone());
-    }
-  }
+  const { auth, id, goal } = this.props;
 
   const CountDownOptions = (countdown.YEARS | countdown.MONTHS | countdown.DAYS);
 
@@ -74,10 +51,6 @@ render() {
     <h3>{goal.title}</h3>
     <h4>{CountDown}</h4>
   </div>
-    <div className="abc-checkbox abc-checkbox-circle">
-      <input type="checkbox" id="toggleDone" onClick={toggleDone} defaultChecked={goal.done === true} />
-      <label />
-    </div>
 <Modal className="goalItemModal" show={this.state.showGoalModal} onHide={this.close}>
 <Modal.Header closeButton>
 <UpdateGoalModal auth={auth} id={id} goal={goal} />
@@ -86,7 +59,7 @@ render() {
   </Modal.Title>
 </Modal.Header>
 <Modal.Body>
-  <div class="goal-description">{goal.description}</div>
+  <div className="goal-description">{goal.description}</div>
   <img className="img-responsive" alt="" src={goal.imgUrl} />
 </Modal.Body>
 <Modal.Footer>

@@ -372,6 +372,7 @@ i.fa-pencil-square-o:hover {
 .goalItemModal .modal-dialog {
   max-width: 80%;
   width: fit-content;
+  min-width: 200px;
 }
 
 .goalItemModal img {
