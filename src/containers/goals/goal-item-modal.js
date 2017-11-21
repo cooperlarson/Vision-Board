@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { firebaseConnect, dataToJS } from 'react-redux-firebase';
 import UpdateGoalModal from '../updateGoal/updateGoalModal';
 import countdown from 'countdown';
+import '../../css/awesome-bootstrap-checkbox.css';
 
 @firebaseConnect(
   ({ auth }) => ([
@@ -39,9 +40,31 @@ export default class GoalItemModal extends Component {
   }
 
 render() {
-  const { auth, id, goal } = this.props
+  const { firebase, auth, id, goal } = this.props;
 
-  const CountDownOptions = (countdown.YEARS | countdown.MONTHS | countdown.DAYS | countdown.HOURS);
+  const isDone = () => {
+    if (goal.done === true) {
+      return (
+        {done: false}
+      );
+    }
+    if (goal.done === false || null) {
+      return (
+        {done: true}
+      );
+    }
+  }
+
+  const toggleDone = (done) => {
+    if (!goal.done) {
+      firebase.uniqueSet(`goals/${auth.uid}/${id}/done`, true)
+    }
+    if (goal.done) {
+      firebase.update(`goals/${auth.uid}/${id}`, isDone());
+    }
+  }
+
+  const CountDownOptions = (countdown.YEARS | countdown.MONTHS | countdown.DAYS);
 
   const CountDown = countdown( new Date(goal.yearDue, goal.monthDue), null, CountDownOptions ).toString();
 
@@ -49,7 +72,12 @@ render() {
   <div>
   <div className="goal-info" onClick={this.open}>
     <h3>{goal.title}</h3>
+    <h4>{CountDown}</h4>
   </div>
+    <div className="abc-checkbox abc-checkbox-circle">
+      <input type="checkbox" id="toggleDone" onClick={toggleDone} defaultChecked={goal.done === true} />
+      <label />
+    </div>
 <Modal className="goalItemModal" show={this.state.showGoalModal} onHide={this.close}>
 <Modal.Header closeButton>
 <UpdateGoalModal auth={auth} id={id} goal={goal} />

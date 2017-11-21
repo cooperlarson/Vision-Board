@@ -80,11 +80,18 @@ renderField(field) {
       min="2017"
       max="3000"
     />
+    <Field
+      name="done"
+      type="hidden"
+      component="input"
+      defaultValue="false"
+      />
     </div>
     <div className="form-group">
       <button
         type="submit"
         className="btn btn-primary"
+        component="input"
         value="submit"
         form="newGoalForm"
       >Add Goal</button>

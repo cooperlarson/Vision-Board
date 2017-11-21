@@ -174,7 +174,7 @@ img.profile-avatar {
 }
 
 @media (max-width: 550px) {
-  .user-profile {
+  .user-profile-name {
     display: none;
   }
 }
@@ -316,7 +316,7 @@ i.fa-pencil-square-o:hover {
 }
 
 .goal-info {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.25);
   color: #fff;
   height: 300px;
   margin-top: -20px;
@@ -330,12 +330,20 @@ i.fa-pencil-square-o:hover {
 }
 
 .goal-info h3 {
-  padding-top: 80px;
+  text-align: left;
+  margin-left: 10px;
+  padding-top: 10px;
   font-size: 1.8em;
+  max-width: 80%;
 }
 
 .goal-info h4 {
-  font-size: 14px;
+  font-size: 1.4em;
+  bottom: 25px;
+  position: absolute;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .goal-info p {
