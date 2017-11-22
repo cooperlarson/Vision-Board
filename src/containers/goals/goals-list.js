@@ -12,7 +12,7 @@ import GoalItem from './goal-item';
 @firebaseConnect(
   ({ auth }) => ([
     // Get auth from props
-    'goals'
+    `/goals/${auth.uid}`
   ])
 )
 @connect(

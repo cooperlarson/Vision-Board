@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { firebaseConnect, isLoaded, isEmpty, pathToJS } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 import Navbar from '../containers/Navbar/navbar';
-import SignUpModal from '../containers/Signup/signup-modal';
-import LoginModal from '../containers/Login/loginModal';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { UserIsNotAuthenticated } from '../utils/noauth';
 
@@ -40,10 +38,6 @@ class LandingPage extends Component {
           <h1>Vision Board</h1>
           <h3>Visualize & Achieve Your Goals</h3>
           <button onClick={handleAnonymousLogin} className="btn btn-primary get-started">Get Started</button>
-          <ul>
-            <button className="btn btn-primary"><SignUpModal /></button>
-            <button className="btn btn-primary"><LoginModal /></button>
-          </ul>
         </div>
       </div>
       )

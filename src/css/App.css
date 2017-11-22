@@ -99,6 +99,10 @@ a .App-title:hover {
   color: rgb(5, 43, 230);
 }
 
+.text-danger {
+  color: rgb(255, 0, 0);
+}
+
 /** Landing Page **/
 
 .landing-page .App-header {
@@ -172,7 +176,7 @@ img.profile-avatar {
 }
 
 .user-profile-name {
-  margin-left: 20px;
+  margin-left: 0px;
   margin-top: -10px;
   text-align: left;
 }
@@ -188,7 +192,6 @@ img.profile-avatar {
   width: 140px;
   border-radius: 50%;
   margin-bottom: 10px;
-  margin-right: 10px;
 }
 
 .user-profile-body div {
@@ -203,6 +206,20 @@ img.profile-avatar {
   }
 }
 
+.guest-account-signup div {
+  margin: 0;
+}
+
+.btn.guest-account-signup {
+  list-style: none;
+  font-size: 14px;
+  margin-left: 200px;
+}
+
+.btn.guest-account-signup .nav-item:hover {
+  color: #fff;
+}
+
 /* Nav elements */
 
 .nav-list {
@@ -215,7 +232,7 @@ img.profile-avatar {
 
 .nav-item {
   color: #fff;
-  width: 50px;
+  min-width: 50px;
   margin-left: 10px;
   margin-top: -1px;
   cursor: pointer;
@@ -224,11 +241,11 @@ img.profile-avatar {
 
 .btn.get-started {
   font-size: 18px;
-  background-color: rgb(1, 158, 225);
+  margin-top: 15px;
 }
 
-.btn.get-started:hover {
-  background-color: rgb(0, 137, 187);
+.modal-footer .btn-danger.logout {
+  float: right;
 }
 
 .social-login {
@@ -253,6 +270,19 @@ img.profile-avatar {
   color: white;
 }
 
+.nav-btn {
+  margin-top: -7.5px;
+  margin-left: 20px;
+  padding: 0 5px;
+  height: 32px;
+}
+
+.btn .nav-item {
+  margin: 0 5px;
+}
+
+/* Goals Header */
+
 .content-header {
   height: 40px;
   margin-top: 65px;
@@ -261,6 +291,15 @@ img.profile-avatar {
 .content-header h3 {
   margin: 0;
   color: #f7f7f7;
+}
+
+.content-header h4, .content-header h5 {
+  margin: 0;
+  text-align: left;
+}
+
+.content-header h5 {
+  margin-top: 5px;
 }
 
 .content-header button.add-new {

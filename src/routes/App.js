@@ -20,12 +20,13 @@ import LoadingSpinner from '../components/LoadingSpinner';
 
 export default class App extends Component {
   render() {
-    if (!isLoaded(this.props.auth)) {
+    const { auth } = this.props
+    if (!isLoaded(auth)) {
       return <LoadingSpinner />
     }
     return (
       <div className="App">
-        <NavbarAuth auth={this.props.auth} />
+        <NavbarAuth auth={auth} />
         <div className="container-fluid">
           <Goals />
         </div>

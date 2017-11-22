@@ -6,6 +6,7 @@ import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 import NewGoalModal from '../Goals/newGoal/newGoalModal';
 import UserProfileModal from '../Account/accountModal';
+import GuestLogoutModal from './guest_logout_modal';
 
 @firebaseConnect(
   ({ auth }) => ([
@@ -63,9 +64,9 @@ export default class NavbarAuth extends Component {
         <Link to={'/'}><h1 className="App-title">Vision Board</h1></Link>
         <NewGoalModal />
         <ul className="nav-list">
-          <SignUpModal />
           <UserProfileModal auth={auth} />
-          <li className="nav-item" onClick={this.handleLogout}>Logout</li>
+          <button className="btn btn-primary nav-btn"><SignUpModal /></button>
+          <GuestLogoutModal auth={auth} />
           </ul>
       </header>
       )

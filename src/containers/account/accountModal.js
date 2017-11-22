@@ -5,6 +5,7 @@ import { firebaseConnect, dataToJS } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 import NewPasswordModal from './Password/emailPassModal';
 import UpdateAccountModal from './Update/updateAccountModal';
+import SignupModal from '../Signup/signup-modal';
 
 @firebaseConnect(
   ({ auth }) => ([
@@ -49,28 +50,51 @@ export default class UserProfileModal extends Component {
     this.setState({ showProfileModal: true });
   }
 
-render() {
-  const { auth, avatar, displayName, username, email } = this.props
+  render() {
+    const { auth, avatar, displayName, username, email } = this.props
 
-  return (
-<div className="user-nav">
-<div className="user-profile-name">Welcome,<br/><span className="display-name" onClick={this.open}>{displayName ? displayName : username ? username : 'User'}</span></div>
-<img className="profile-avatar" alt="user" onClick={this.open} src={avatar ? avatar : 'http://res.cloudinary.com/ddddyraui/image/upload/v1510783413/avatar-default_tzstp0.png'} />
-<Modal className="UserProfileModal" show={this.state.showProfileModal} onHide={this.close}>
-<Modal.Header closeButton>
-  <UpdateAccountModal auth={auth} />
-  <Modal.Title>
-  <img className="profile-avatar-lg" alt="user" src={avatar ? avatar : 'http://res.cloudinary.com/ddddyraui/image/upload/v1510783413/avatar-default_tzstp0.png'} />
-  <div>{displayName}</div>
-  </Modal.Title>
-</Modal.Header>
-<Modal.Body className="user-profile-body">
-  <div><strong>Email: </strong>{email}</div>
-  <div><strong>Username: </strong>{username}</div>
-  <NewPasswordModal />
-</Modal.Body>
-</Modal>
-</div>
-  )
+    const isAnonymous = auth.isAnonymous;
+
+  if (!isAnonymous) {
+    return (
+      <div className="user-nav">
+      <div className="user-profile-name">Welcome,<br/><span className="display-name" onClick={this.open}>{displayName ? displayName : username ? username : 'User'}</span></div>
+      <img className="profile-avatar" alt="user" onClick={this.open} src={avatar ? avatar : 'http://res.cloudinary.com/ddddyraui/image/upload/v1510783413/avatar-default_tzstp0.png'} />
+      <Modal className="UserProfileModal" show={this.state.showProfileModal} onHide={this.close}>
+      <Modal.Header closeButton>
+        <UpdateAccountModal auth={auth} />
+        <Modal.Title>
+        <img className="profile-avatar-lg" alt="user" src={avatar ? avatar : 'http://res.cloudinary.com/ddddyraui/image/upload/v1510783413/avatar-default_tzstp0.png'} />
+        <div>{displayName}</div>
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body className="user-profile-body">
+        <div><strong>Email: </strong>{email}</div>
+        <div><strong>Username: </strong>{username}</div>
+        <NewPasswordModal />
+      </Modal.Body>
+      </Modal>
+      </div>
+    )
+  }
+  if (isAnonymous) {
+    return (
+      <div className="user-nav">
+      <div className="user-profile-name">Welcome,<br/><span className="display-name" onClick={this.open}>Guest</span></div>
+      <img className="profile-avatar" alt="user" onClick={this.open} src='http://res.cloudinary.com/ddddyraui/image/upload/v1510783413/avatar-default_tzstp0.png' />
+      <Modal className="UserProfileModal" show={this.state.showProfileModal} onHide={this.close}>
+      <Modal.Header closeButton>
+        <Modal.Title>
+          <img className="profile-avatar-lg" alt="user" src={avatar ? avatar : 'http://res.cloudinary.com/ddddyraui/image/upload/v1510783413/avatar-default_tzstp0.png'} />
+          <div>Guest Account</div>
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body className="user-profile-body">
+          <button className="btn btn-primary guest-account-signup"><SignupModal /></button>
+      </Modal.Body>
+      </Modal>
+      </div>
+    )
+  }
 }
 }
