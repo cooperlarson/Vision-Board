@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { firebaseConnect, pathToJS, dataToJS } from 'react-redux-firebase';
 import { Modal } from 'react-bootstrap';
-import LoginForm from '../../Login/loginForm';
-import ProviderLogin from '../../Login/Provider';
+import LoginForm from '../Login/loginForm';
+import ProviderLogin from '../Login/providerLogin';
 
 @firebaseConnect(
   ({ auth }) => ([

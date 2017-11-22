@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import SignUpModal from '../signup/signup-modal';
+import SignUpModal from '../Signup/signup-modal';
 import { connect } from 'react-redux';
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
-import NewGoalModal from '../newGoal/newGoalModal';
-import UserProfileModal from '../account/accountModal';
+import NewGoalModal from '../Goals/newGoal/newGoalModal';
+import UserProfileModal from '../Account/accountModal';
 
 @firebaseConnect(
   ({ auth }) => ([

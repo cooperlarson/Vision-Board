@@ -5,8 +5,8 @@ import {
   pathToJS,
   isLoaded
 } from 'react-redux-firebase';
-import Goals from '../containers/goals/goals';
-import NavbarAuth from '../containers/navbar/navbar_auth';
+import Goals from '../containers/Goals';
+import NavbarAuth from '../containers/Navbar/navbar_auth';
 import { UserIsAuthenticated } from '../utils/auth';
 import LoadingSpinner from '../components/LoadingSpinner';
 

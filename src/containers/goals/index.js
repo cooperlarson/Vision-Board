@@ -3,6 +3,7 @@ import GoalsList from './goals-list';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import { connect } from 'react-redux';
 import { pathToJS, isLoaded } from 'react-redux-firebase';
+import GoalsHeader from '../../components/goals_header';
 
 @connect(
   ({ firebase }) => ({
@@ -16,7 +17,10 @@ import { pathToJS, isLoaded } from 'react-redux-firebase';
       return <LoadingSpinner />
     }
     return (
+      <div>
+      <GoalsHeader />
       <GoalsList auth={this.props.auth} />
+      </div>
     )
    }
  }

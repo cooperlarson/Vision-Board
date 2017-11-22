@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ContentHeader extends Component {
+export default class GoalsHeader extends Component {
   render() {
     return (
       <section className="content-header">
@@ -14,5 +14,3 @@ class ContentHeader extends Component {
     );
   }
 }
-
-export default ContentHeader;

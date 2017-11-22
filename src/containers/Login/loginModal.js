@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { firebaseConnect, pathToJS } from 'react-redux-firebase';
 import { Modal } from 'react-bootstrap';
 import LoginForm from './loginForm';
-import ProviderLogin from './Provider';
+import ProviderLogin from './providerLogin';
+import ForgotPasswordModal from './forgotPassword/forgotPassModal';
 
 @firebaseConnect()
 @connect(({ firebase }) => ({
@@ -48,6 +49,7 @@ class LoginModal extends Component {
         <Modal.Body>
           <LoginForm onSubmit={handleLogin} />
           <ProviderLogin />
+          <ForgotPasswordModal />
         </Modal.Body>
         </Modal>
       </div>

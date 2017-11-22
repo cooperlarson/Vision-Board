@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-class EmailPasswordForm extends Component {
+class ForgotPasswordForm extends Component {
 renderField(field) {
   const { meta: { touched, error } } = field;
   const className = `form-group ${touched && error ? 'has-danger' : ''}`;
@@ -25,7 +25,7 @@ renderField(field) {
     const { handleSubmit } = this.props
 
     return (
-  <form id="EmailPasswordForm" className="EmailPasswordForm" onSubmit={handleSubmit}>
+  <form id="ForgotPasswordForm" className="ForgotPasswordForm" onSubmit={handleSubmit}>
     <Field
       name="email"
       label="Email"
@@ -57,5 +57,5 @@ function validate(values) {
 
 export default reduxForm({
   validate,
-  form: 'EmailPasswordForm'
-})(EmailPasswordForm)
+  form: 'ForgotPasswordForm'
+})(ForgotPasswordForm)

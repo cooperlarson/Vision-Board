@@ -3,7 +3,7 @@ import { Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { firebaseConnect, dataToJS } from 'react-redux-firebase';
 import UpdateAccountForm from './updateAccountForm';
-import ReauthModal from '../Delete/reauthModal';
+import ReauthModal from '../reauthModal';
 
 @firebaseConnect(
   ({ auth }) => ([

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { firebaseConnect, dataToJS } from 'react-redux-firebase';
-import UpdateGoalModal from '../updateGoal/updateGoalModal';
+import UpdateGoalModal from './updateGoal/updateGoalModal';
 import countdown from 'countdown';
 
 @firebaseConnect(

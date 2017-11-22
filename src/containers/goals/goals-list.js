@@ -12,13 +12,13 @@ import GoalItem from './goal-item';
 @firebaseConnect(
   ({ auth }) => ([
     // Get auth from props
-    `/goals/${auth.uid}`
+    'goals'
   ])
 )
 @connect(
   ({ firebase }, { auth }) => ({
      // pathToJS(firebase, 'auth') gets from redux, but auth is already a prop
-     goals: dataToJS(firebase, `/goals/${auth.uid}`),
+     goals: dataToJS(firebase, `/goals/${auth.uid}`)
   })
 )
 

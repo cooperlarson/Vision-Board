@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 import GoogleButton from 'react-google-button';
 import FacebookLogin from 'react-facebook-login';
-import ForgotPasswordModal from '../emailPassword/emailPasswordModal';
 
 @firebaseConnect()
 @connect(({ firebase }) => ({
@@ -33,9 +32,7 @@ render() {
 
   return (
     <div>
-    <div>
       <p>Or</p>
-    </div>
     <div>
       <FacebookLogin
         appId="144263412864280"
@@ -47,9 +44,6 @@ render() {
     </div>
     <div className="social-login">
       <GoogleButton onClick={googleLogin} />
-    </div>
-    <div>
-      <ForgotPasswordModal />
     </div>
   </div>
   )

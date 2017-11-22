@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { firebaseConnect, pathToJS } from 'react-redux-firebase';
-import EmailPasswordForm from './emailPasswordForm';
+import ForgotPasswordForm from './forgotPassForm';
 
 @firebaseConnect()
 @connect(({ firebase }) => ({
@@ -56,7 +56,7 @@ render() {
 <Modal.Body>
     <div className="success_message">{this.state.message}</div>
     <div className="error_message">{this.state.error_message}</div>
-    <EmailPasswordForm onSubmit={this.sendRecoveryEmail} />
+    <ForgotPasswordForm onSubmit={this.sendRecoveryEmail} />
 </Modal.Body>
 </Modal>
 </div>
