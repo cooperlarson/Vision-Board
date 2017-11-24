@@ -50,6 +50,7 @@ renderField(field) {
     <div className="col-xs-6 form-group">
     <label>Month</label>
     <Field
+      parse={value => Number(value)}
       name="monthDue"
       className="form-control"
       component="select"
@@ -72,6 +73,7 @@ renderField(field) {
     <div className="col-xs-6 form-group">
     <label>Year</label>
     <Field
+      parse={value => Number(value)}
       name="yearDue"
       className="form-control"
       placeholder="YYYY"

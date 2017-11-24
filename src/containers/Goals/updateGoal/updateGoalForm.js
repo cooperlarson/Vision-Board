@@ -8,10 +8,10 @@ class UpdateGoalForm extends Component {
     const { goal } = this.props
     this.props.initialize({
       title: goal.title,
-      description: goal.description,
+      description: goal.description ? goal.description: '',
       imgUrl: goal.imgUrl,
-      monthDue: goal.monthDue,
-      yearDue: goal.yearDue
+      monthDue: goal.monthDue ? goal.monthDue: '',
+      yearDue: goal.yearDue ? goal.yearDue: ''
      });
   }
 
@@ -62,6 +62,7 @@ renderField(field) {
     <div className="col-xs-6 form-group">
     <label>Month</label>
     <Field
+      parse={value => Number(value)}
       name="monthDue"
       className="form-control"
       component="select"
@@ -84,6 +85,7 @@ renderField(field) {
     <div className="col-xs-6 form-group">
     <label>Year</label>
     <Field
+      parse={value => Number(value)}
       name="yearDue"
       className="form-control"
       placeholder="YYYY"
