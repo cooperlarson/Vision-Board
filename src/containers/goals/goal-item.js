@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { firebaseConnect, dataToJS, isEmpty } from 'react-redux-firebase';
+import { firebaseConnect } from 'react-redux-firebase';
 import GoalItemModal from './goal-item-modal';
 import '../../css/awesome-bootstrap-checkbox.css';
 
 @firebaseConnect(
-  ({ auth }) => ([
-    // Get auth from props
-    `/goals/${auth.uid}`
-  ])
+  ({ auth }) => ([])
 )
 @connect(
-  ({ firebase }, { auth }) => ({
-     // pathToJS(firebase, 'auth') gets from redux, but auth is already a prop
-     goals: dataToJS(firebase, `/goals/${auth.uid}`),
-  })
+  ({ firebase }, { auth }) => ({})
 )
 
 class GoalItem extends Component {
@@ -35,21 +29,21 @@ class GoalItem extends Component {
   render() {
     const { firebase, goal, auth, id } = this.props;
 
-    const isDone = () => {
-      if (goal.done === true) {
-        return (
-          false
-        );
-      }
-      if (goal.done === false || null || isEmpty) {
-        return (
-          true
-        );
-      }
-    }
-
     const toggleDone = (done) => {
-        firebase.set(`goals/${auth.uid}/${id}/done`, isDone());
+      if (goal.done === false) {
+        firebase.set(`goals/${auth.uid}/completed/${id}`, goal);
+        firebase.set(`goals/${auth.uid}/completed/${id}/done`, true)
+          .then(() => {
+            firebase.remove(`goals/${auth.uid}/active/${id}`)
+          })
+      }
+      if (goal.done === true) {
+        firebase.set(`goals/${auth.uid}/active/${id}`, goal);
+        firebase.set(`goals/${auth.uid}/active/${id}/done`, false)
+          .then(() => {
+            firebase.remove(`goals/${auth.uid}/completed/${id}`)
+          })
+      }
     }
 
     const goalBgImg = {backgroundImage: `url(${goal.imgUrl})`};

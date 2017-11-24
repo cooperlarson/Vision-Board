@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import './css/index.css';
 import App from './routes/App';
 import LandingPage from './routes/LandingPage';
+import Completed from './routes/Completed';
 import registerServiceWorker from './registerServiceWorker';
 import store from './store';
 import { Router, Route, Switch } from 'react-router-dom';
@@ -14,6 +15,7 @@ ReactDOM.render(
     <Router history={history}>
       <div>
         <Switch>
+          <Route path="/Completed" component={Completed} />
           <Route path="/Home" component={App}/>
           <Route path="/" component={LandingPage} />
         </Switch>

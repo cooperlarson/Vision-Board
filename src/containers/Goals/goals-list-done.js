@@ -13,17 +13,17 @@ import GoalsHeader from '../../components/goals_header';
 @firebaseConnect(
   ({ auth }) => ([
     // Get auth from props
-    `/goals/${auth.uid}/active`,
+    `/goals/${auth.uid}/completed`,
   ])
 )
 @connect(
   ({ firebase }, { auth }) => ({
      // pathToJS(firebase, 'auth') gets from redux, but auth is already a prop
-     goals: dataToJS(firebase, `/goals/${auth.uid}/active`),
+     goals: dataToJS(firebase, `/goals/${auth.uid}/completed`),
   })
 )
 
-export default class GoalsList extends Component {
+export default class CompletedGoals extends Component {
   static propTypes = {
     goals: PropTypes.object,
     firebase: PropTypes.shape({
@@ -40,16 +40,15 @@ export default class GoalsList extends Component {
     const goalsList = !isLoaded(goals)
       ? 'Loading'
       : isEmpty(goals)
-        ? 'Vision Board is empty'
+        ? 'Completed goals will appear here'
         : Object.keys(goals).map((id) => (
             <GoalItem auth={this.props.auth} key={id} id={id} goal={goals[id]} />
           ))
     return (
       <section className='goals'>
-      <GoalsHeader title="My Vision Board" listLink="/Completed" linkTitle="Completed Goals"/>
+      <GoalsHeader title="Completed Goals" listLink={'/Home'} linkTitle="Active Goals"/>
       {goalsList}
       </section>
     );
   }
 }
-

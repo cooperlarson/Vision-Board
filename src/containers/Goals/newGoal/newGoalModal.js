@@ -32,7 +32,7 @@ class NewGoalModal extends Component {
   handleAdd = (newGoal) => {
   const { firebase } = this.props;
   const userId = firebase.auth().currentUser.uid;
-  firebase.push(`goals/${userId}`, newGoal)
+  firebase.push(`goals/${userId}/active`, newGoal)
   .then(() => {
     this.close()
   })

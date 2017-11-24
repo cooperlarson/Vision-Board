@@ -5,7 +5,7 @@ import {
   pathToJS,
   isLoaded
 } from 'react-redux-firebase';
-import GoalsList from '../containers/Goals/goals-list';
+import CompletedGoals from '../containers/Goals/goals-list-done';
 import NavbarAuth from '../containers/Navbar/navbar_auth';
 import { UserIsAuthenticated } from '../utils/auth';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -19,6 +19,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
  )
 
 export default class App extends Component {
+
   render() {
     const { auth } = this.props
     if (!isLoaded(auth)) {
@@ -28,7 +29,7 @@ export default class App extends Component {
       <div className="App">
         <NavbarAuth auth={auth} />
         <div className="container-fluid">
-          <GoalsList auth={auth} />
+          <CompletedGoals auth={auth} />
         </div>
       </div>
     );

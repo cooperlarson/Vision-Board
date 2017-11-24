@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { firebaseConnect, dataToJS } from 'react-redux-firebase';
+import { firebaseConnect } from 'react-redux-firebase';
 import UpdateGoalForm from './updateGoalForm'
 
 @firebaseConnect(
-  ({ auth }) => ([
-    // Get auth from props
-    `/goals/${auth.uid}`
-  ])
+  ({ auth }) => ([])
 )
 @connect(
-  ({ firebase }, { auth }) => ({
-     // pathToJS(firebase, 'auth') gets from redux, but auth is already a prop
-     goals: dataToJS(firebase, `/goals/${auth.uid}`),
-  })
+  ({ firebase }, { auth }) => ({})
 )
 
 export default class UpdateGoalModal extends Component {
@@ -41,14 +35,14 @@ render() {
   const { firebase, auth, id, goal } = this.props
 
   const updateGoal = (goal) => {
-    firebase.update(`/goals/${auth.uid}/${id}`, goal)
+    firebase.update(`/goals/${auth.uid}/active/${id}`, goal)
     .then(() => {
       this.close()
     })
   }
 
   const deleteGoal = (event) => {
-    firebase.remove(`/goals/${auth.uid}/${id}`)
+    firebase.remove(`/goals/${auth.uid}/active/${id}`)
   }
 
   return (
