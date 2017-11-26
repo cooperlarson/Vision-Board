@@ -6,7 +6,6 @@ import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 import NewGoalModal from '../Goals/newGoal/newGoalModal';
 import UserProfileModal from '../Account/accountModal';
-import GuestLogoutModal from './guest_logout_modal';
 
 @firebaseConnect(
   ({ auth }) => ([
@@ -25,19 +24,14 @@ export default class NavbarAuth extends Component {
     })
   }
 
-  handleLogout = () => {
-    const { firebase, auth } = this.props;
-    firebase.logout()
-    if (auth.isAnonymous) {
-      firebase.auth().currentUser.delete();
-      firebase.remove(`/goals/${auth.uid}`);
-    }
-  }
-
   render() {
-    const { auth } = this.props
+    const { auth, listLink, linkTitle } = this.props
 
     const isAnonymous = auth.isAnonymous;
+
+    const goBack = isLoaded(listLink && linkTitle) && !isEmpty(listLink && linkTitle) ?
+    <Link to={listLink}><button className="btn btn-primary add-new"><i class="fa fa-arrow-left" aria-hidden="true"></i> {linkTitle}</button></Link>
+      : <NewGoalModal />; 
 
       if (!isLoaded(auth)) {
         return (
@@ -49,11 +43,10 @@ export default class NavbarAuth extends Component {
      if (isLoaded(auth) && !isEmpty(auth) && !isAnonymous) {
        return (
       <header className="App-header">
+        {goBack}
         <Link to={'/'}><h1 className="App-title">Vision Board</h1></Link>
-        <NewGoalModal />
         <ul className="nav-list">
-          <UserProfileModal auth={auth} />
-          <li className="nav-item" onClick={this.handleLogout}>Logout</li>
+          <UserProfileModal auth={auth} listLink={'/Completed'} linkTitle="Completed Goals"/>
           </ul>
       </header>
        )
@@ -61,12 +54,11 @@ export default class NavbarAuth extends Component {
     if (isLoaded(auth) && !isEmpty(auth) && isAnonymous) {
       return (
       <header className="App-header">
+        {goBack}
         <Link to={'/'}><h1 className="App-title">Vision Board</h1></Link>
-        <NewGoalModal />
         <ul className="nav-list">
           <UserProfileModal auth={auth} />
           <button className="btn btn-primary nav-btn"><SignUpModal /></button>
-          <GuestLogoutModal auth={auth} />
           </ul>
       </header>
       )

@@ -27,7 +27,7 @@ export default class App extends Component {
     }
     return (
       <div className="App">
-        <NavbarAuth auth={auth} />
+        <NavbarAuth auth={auth} listLink="/Home" linkTitle="Home"/>
         <div className="container-fluid">
           <CompletedGoals auth={auth} />
         </div>

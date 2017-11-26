@@ -3,9 +3,12 @@ import { Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { firebaseConnect, dataToJS } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import NewPasswordModal from './Password/emailPassModal';
 import UpdateAccountModal from './Update/updateAccountModal';
 import SignupModal from '../Signup/signup-modal';
+import NewQuoteModal from '../Quotes/quote_modal';
+import GuestLogoutModal from '../Navbar/guest_logout_modal';
 
 @firebaseConnect(
   ({ auth }) => ([
@@ -50,6 +53,15 @@ export default class UserProfileModal extends Component {
     this.setState({ showProfileModal: true });
   }
 
+  handleLogout = () => {
+    const { firebase, auth } = this.props;
+    firebase.logout()
+    if (auth.isAnonymous) {
+      firebase.auth().currentUser.delete();
+      firebase.remove(`/goals/${auth.uid}`);
+    }
+  }
+
   render() {
     const { auth, avatar, displayName, username, email } = this.props
 
@@ -67,12 +79,17 @@ export default class UserProfileModal extends Component {
         <img className="profile-avatar-lg" alt="user" src={avatar ? avatar : 'http://res.cloudinary.com/ddddyraui/image/upload/v1510783413/avatar-default_tzstp0.png'} />
         <div>{displayName}</div>
         </Modal.Title>
+        <NewQuoteModal />
+        <Link to={this.props.listLink}><button className="btn btn-primary add-quote">{this.props.linkTitle}</button></Link>
       </Modal.Header>
       <Modal.Body className="user-profile-body">
         <div><strong>Email: </strong>{email}</div>
         <div><strong>Username: </strong>{username}</div>
         <NewPasswordModal />
       </Modal.Body>
+      <Modal.Footer>
+        <button className="btn btn-warning" onClick={this.handleLogout}>Logout</button>
+      </Modal.Footer>
       </Modal>
       </div>
     )
@@ -92,6 +109,9 @@ export default class UserProfileModal extends Component {
       <Modal.Body className="user-profile-body">
           <button className="btn btn-primary guest-account-signup"><SignupModal /></button>
       </Modal.Body>
+      <Modal.Footer>
+        <GuestLogoutModal auth={auth} />
+      </Modal.Footer>
       </Modal>
       </div>
     )

@@ -41,6 +41,7 @@ a:hover {
 
 a .App-title {
   font-size: 1.5em;
+  margin: 0 auto;
   margin-top: -5px;
   width: 120px;
   color: #fff;
@@ -165,7 +166,6 @@ img.profile-avatar {
   height: 40px;
   object-fit: cover;
   border-radius: 50%;
-  margin-top: -12.5px;
   margin-left: 10px;
   cursor: pointer;
   cursor: hand;
@@ -173,11 +173,10 @@ img.profile-avatar {
 
 .user-nav {
   display: flex;
+  margin-top: -12.5px;
 }
 
 .user-profile-name {
-  margin-left: 0px;
-  margin-top: -10px;
   text-align: left;
 }
 
@@ -225,7 +224,7 @@ img.profile-avatar {
 .nav-list {
   width: auto;
   float: right;
-  margin-top: -51px;
+  margin-top: -20px;
   display: inline-flex;
   list-style: none;
 }
@@ -261,8 +260,9 @@ img.profile-avatar {
   background-color: #1E88E5;
   color: #f7f7f7;
   border: none;
+  margin-top: -10px;
   font-size: 14px;
-  margin-top: -67.5px;
+  float: left;
 }
 
 .btn.add-new:hover {
@@ -281,6 +281,14 @@ img.profile-avatar {
   margin: 0 5px;
 }
 
+.add-quote {
+  margin-top: 10px;
+}
+
+.form-hidden {
+  display: none;
+}
+
 /* Goals Header */
 
 .content-header {
@@ -290,16 +298,8 @@ img.profile-avatar {
 
 .content-header h3 {
   margin: 0;
-  color: #f7f7f7;
-}
-
-.content-header h4, .content-header h5 {
-  margin: 0;
-  text-align: left;
-}
-
-.content-header h5 {
-  margin-top: 5px;
+  color: #ffcc00;
+  display: none;
 }
 
 .content-header button.add-new {
@@ -322,6 +322,23 @@ ul.goals-list {
 .btn-sort:hover {
   background-color: rgba(63, 81, 181, 1);
   color: #eee;
+}
+
+.quote-container {
+  padding-bottom: 10px;
+}
+
+.quote-container h4 {
+  font-style: italic;
+  font-weight: 300;
+  text-align: center;
+  color: aliceblue;
+}
+
+.quote-container h5 {
+  text-align: center;
+  font-weight: 200;
+  color: honeydew;
 }
 
 /* Modal General */

@@ -46,7 +46,7 @@ export default class GoalsList extends Component {
           ))
     return (
       <section className='goals'>
-      <GoalsHeader title="My Vision Board" listLink="/Completed" linkTitle="Completed Goals"/>
+      <GoalsHeader />
       {goalsList}
       </section>
     );
