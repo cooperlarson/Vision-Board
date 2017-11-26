@@ -6,7 +6,7 @@ import {
   isLoaded
 } from 'react-redux-firebase';
 import CompletedGoals from '../containers/Goals/goals-list-done';
-import NavbarAuth from '../containers/Navbar/navbar_auth';
+import Navbar from '../containers/Navbar';
 import { UserIsAuthenticated } from '../utils/auth';
 import LoadingSpinner from '../components/LoadingSpinner';
 
@@ -27,7 +27,7 @@ export default class App extends Component {
     }
     return (
       <div className="App">
-        <NavbarAuth auth={auth} listLink="/Home" linkTitle="Home"/>
+        <Navbar auth={auth} listLink="/Home" linkTitle="Home"/>
         <div className="container-fluid">
           <CompletedGoals auth={auth} />
         </div>

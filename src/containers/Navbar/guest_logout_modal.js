@@ -44,7 +44,7 @@ export default class GuestLogoutModal extends Component {
 render() {
   return (
 <div>
-<li className="nav-item" onClick={this.open}>Logout</li>
+<button className="btn btn-danger" onClick={this.open}>Logout</button>
 <Modal className="guestLogoutModal" show={this.state.guestLogoutModal} onHide={this.close}>
 <Modal.Header closeButton>
   <Modal.Title><span className="text-danger">Alert: </span>Vision Board Will Be Deleted</Modal.Title>

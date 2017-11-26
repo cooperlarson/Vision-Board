@@ -106,11 +106,9 @@ export default class UserProfileModal extends Component {
           <div>Guest Account</div>
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body className="user-profile-body">
-          <button className="btn btn-primary guest-account-signup"><SignupModal /></button>
-      </Modal.Body>
       <Modal.Footer>
         <GuestLogoutModal auth={auth} />
+        <button className="btn btn-primary guest-account-signup"><SignupModal /></button>
       </Modal.Footer>
       </Modal>
       </div>

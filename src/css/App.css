@@ -110,6 +110,10 @@ a .App-title:hover {
   background-color: rgba(34, 34, 34, 0);
 }
 
+.landing-page .App-title {
+  display: none;
+}
+
 .landing-page .jumbotron {
   background-image: url('http://res.cloudinary.com/ddddyraui/image/upload/v1510622064/Portfolio/background.jpg');
   text-align: center;
@@ -140,7 +144,7 @@ a .App-title:hover {
 }
 
 .landing-page .nav-list {
-  margin-top: -35px;
+  margin-top: -25px;
 }
 
 .landing-page .nav-item {
@@ -212,7 +216,11 @@ img.profile-avatar {
 .btn.guest-account-signup {
   list-style: none;
   font-size: 14px;
-  margin-left: 200px;
+  float: right;
+}
+
+.guestLogoutModal .btn.guest-account-signup {
+  float: left;
 }
 
 .btn.guest-account-signup .nav-item:hover {
@@ -250,10 +258,6 @@ img.profile-avatar {
 .social-login {
   width: fit-content;
   margin: 10px auto;
-}
-
-.nav-item:hover {
-  color: #4fb6ff
 }
 
 .btn.add-new {
@@ -339,6 +343,10 @@ ul.goals-list {
   text-align: center;
   font-weight: 200;
   color: honeydew;
+}
+
+.empty-notice {
+  margin-top: 80px;
 }
 
 /* Modal General */
