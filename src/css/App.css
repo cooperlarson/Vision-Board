@@ -1,6 +1,32 @@
+/** App **/
 .App {
   text-align: center;
   max-width: 100%;
+  background: rgba(40,178,217,1);
+  background: -moz-linear-gradient(top, rgba(40,178,217,1) 0%, rgba(13,46,56,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(40,178,217,1)), color-stop(100%, rgba(13,46,56,1)));
+  background: -webkit-linear-gradient(top, rgba(40,178,217,1) 0%, rgba(13,46,56,1) 100%);
+  background: -o-linear-gradient(top, rgba(40,178,217,1) 0%, rgba(13,46,56,1) 100%);
+  background: -ms-linear-gradient(top, rgba(40,178,217,1) 0%, rgba(13,46,56,1) 100%);
+  background: linear-gradient(to bottom, rgba(40,178,217,1) 0%, rgba(13,46,56,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#28b2d9', endColorstr='#0d2e38', GradientType=0 );
+  padding-bottom: 20px;
+  min-height: stretch;
+}
+
+.App-header {
+  background-color: rgba(34, 34, 34, 0.8);
+  height: 50px;
+  padding: 20px;
+  color: white;
+  display: block;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
+.App-intro {
+  font-size: large;
 }
 
 .App-logo {
@@ -8,39 +34,279 @@
   height: 80px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 50px;
-  padding: 20px 0;
-  color: white;
-  margin-bottom: 15px;
+a:hover {
+  text-decoration: none;
+  color: inherit;
 }
 
-.App-title {
+a .App-title {
   font-size: 1.5em;
+  margin: 0 auto;
   margin-top: -5px;
+  width: 120px;
+  color: #fff;
+  text-decoration: none;
 }
 
-.App-intro {
-  font-size: large;
+a .App-title:hover {
+  color: #4fb6ff;
+  text-decoration: none;
 }
 
-.btn, .btn:focus {
-  background-color: rgb(36, 107, 213);
+/* Loading Spinner */
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: stretch;
+  height: -webkit-stretch;
+  background-color: #676767;
+}
+
+.loading .css-18x1wzw {
+  display: block;
+  margin: 200px auto;
+}
+
+/* Text Properties */
+.success_message {
+  color: green;
+  margin-bottom: 10px;
+}
+
+.error_message {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.forgot-pass-text {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.forgot-pass-text:hover {
+  color: red;
+}
+
+.reset-pass-text {
+  color: #3F51B5;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.reset-pass-text:hover {
+  color: rgb(5, 43, 230);
+}
+
+.text-danger {
+  color: rgb(255, 0, 0);
+}
+
+/** Landing Page **/
+
+.landing-page .App-header {
+  background-color: rgba(34, 34, 34, 0);
+}
+
+.landing-page .App-title {
+  display: none;
+}
+
+.landing-page .jumbotron {
+  background-image: url('http://res.cloudinary.com/ddddyraui/image/upload/v1510622064/Portfolio/background.jpg');
+  text-align: center;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -10000;
+  width: 100%;
+  height: 100%;
+  color: #5d5d5d;
+  margin: 0;
+}
+
+.landing-page .jumbotron h1 {
+  padding-top: 100px;
+}
+
+.landing-page .jumbotron ul {
+  list-style: none;
+  margin: 20px auto;
+  padding: 0;
+}
+
+.landing-page a button {
+  margin-top: 20px;
+  font-size: 24px;
+}
+
+.landing-page .nav-list {
+  margin-top: -25px;
+}
+
+.landing-page .nav-item {
+  margin-left: 30px;
+}
+
+.landing-page .jumbotron li.nav-item {
+  margin: 0 5px;
+}
+
+.landing-page .btn .nav-item:hover{
+  color: #fff;
+}
+
+.landing-page button {
+  margin: 0 15px;
+}
+
+/* User Account Modal/Navbar */
+
+img.profile-avatar {
+  height: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 10px;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.user-nav {
+  display: flex;
+  margin-top: -12.5px;
+}
+
+.user-profile-name {
+  text-align: left;
+}
+
+.display-name:hover {
+  color: #00eeff;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.profile-avatar-lg {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.user-profile-body div {
+  font-size: 16px;
+  margin: 0px 10px 10px 10px;
+  text-align: left;
+}
+
+@media (max-width: 550px) {
+  .user-profile-name {
+    display: none;
+  }
+  .nav-btn {
+    display: none;
+  }
+}
+
+.guest-account-signup div {
+  margin: 0;
+}
+
+.btn.guest-account-signup {
+  list-style: none;
+  font-size: 14px;
+  float: right;
+}
+
+.guestLogoutModal .btn.guest-account-signup {
+  float: left;
+}
+
+.btn.guest-account-signup .nav-item:hover {
+  color: #fff;
+}
+
+/* Nav elements */
+
+.nav-list {
+  width: auto;
+  float: right;
+  margin-top: -20px;
+  display: inline-flex;
+  list-style: none;
+}
+
+.nav-item {
+  color: #fff;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-top: -1px;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.btn.get-started {
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+.modal-footer .btn-danger.logout {
+  float: right;
+}
+
+.social-login {
+  width: fit-content;
+  margin: 10px auto;
+}
+
+.btn.add-new {
+  background-color: #1E88E5;
   color: #f7f7f7;
+  border: none;
+  margin-top: -10px;
+  font-size: 14px;
+  float: left;
 }
 
-.btn:hover {
-  background-color: rgb(29, 89, 172);
+.btn.add-new:hover {
+  background-color: rgb(0, 111, 201);
   color: white;
 }
+
+.nav-btn {
+  margin-top: -7.5px;
+  margin-left: 20px;
+  padding: 0 5px;
+  height: 32px;
+}
+
+.btn .nav-item {
+  margin: 0 5px;
+}
+
+.add-quote {
+  margin-top: 10px;
+}
+
+.form-hidden {
+  display: none;
+}
+
+/* Goals Header */
 
 .content-header {
   height: 40px;
+  margin-top: 65px;
 }
 
 .content-header h3 {
   margin: 0;
+  color: #ffcc00;
+  display: none;
 }
 
 .content-header button.add-new {
@@ -54,19 +320,120 @@ ul.goals-list {
   margin-left: -15px;
 }
 
-i.fa.delete-goal {
+.btn-sort {
+  float: left;
+  background-color: rgba(63, 81, 181, .8);
+  color: #eee;
+}
+
+.btn-sort:hover {
+  background-color: rgba(63, 81, 181, 1);
+  color: #eee;
+}
+
+.quote-container {
+  padding-bottom: 10px;
+}
+
+.quote-container h4 {
+  font-style: italic;
+  font-weight: 300;
+  text-align: center;
+  color: aliceblue;
+}
+
+.quote-container h5 {
+  text-align: center;
+  font-weight: 200;
+  color: honeydew;
+}
+
+.empty-notice {
+  margin-top: 80px;
+}
+
+/* Modal General */
+
+.modal-dialog {
+  width: 80%;
+  max-width: 400px;
   position: absolute;
-  left: 15px;
-  top: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+  text-align: center;
+}
+
+.modal-title {
+  font-size: 20px;
+}
+
+button.close {
+  font-size: 23px;
+}
+
+.modal-footer {
+  text-align: center;
+  font-size: 16px;
+}
+
+/* Goal Item Modal */
+
+.goalItemModal .modal-content {
+  background-color: #455a64ed;
+  color: #eeeeee;
+}
+
+.goalItemModal button.close {
+  color: white;
+  opacity: .5;
   font-size: 24px;
-  color: rgb(186, 2, 2);
-  opacity: 0;
+}
+
+.goalItemModal .modal-dialog {
+  max-width: 80%;
+  width: fit-content;
+  min-width: 200px;
+}
+
+.goalItemModal img {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 7.5px;
+}
+
+i.fa-pencil-square-o {
+  font-size: 24px;
+  float: left;
   cursor: pointer;
   cursor: hand;
 }
 
-i.fa.delete-goal:hover {
-  opacity: 1;
+i.fa-trash-o {
+  font-size: 24px;
+  float: left;
+  cursor: pointer;
+  cursor: hand;
+  color: #f44336;
+}
+
+i.fa-pencil-square-o:hover {
+  color: rgb(36, 107, 213);
+}
+
+.modal-footer .btn-danger {
+  float: left;
+}
+
+.btn.delete-account {
+  margin: 0 auto;
+  float: none;
+}
+
+/* Goals */
+
+.goals {
+  color: #e1e1e1;
 }
 
 .goal-box {
@@ -76,21 +443,24 @@ i.fa.delete-goal:hover {
 
 .goal-item {
   width: 100%;
-  height: 200px;
+  height: 300px;
   display: block;
   float: left;
   background-size: cover;
   background-position: center;
   border-radius: 7.5px;
   margin-bottom: 20px;
+  box-shadow: 4px 5px 14px black;
 }
 
 .goal-info {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.25);
   color: #fff;
-  height: 100%;
+  height: 300px;
   margin-top: -20px;
   border-radius: 7.5px;
+  cursor: pointer;
+  cursor: hand;
 }
 
 .goal-info:hover {
@@ -98,15 +468,33 @@ i.fa.delete-goal:hover {
 }
 
 .goal-info h3 {
-  padding-top: 50px;
-  font-size: 20px;
+  text-align: left;
+  margin-left: 10px;
+  padding-top: 10px;
+  font-size: 1.8em;
+  max-width: 80%;
 }
 
 .goal-info h4 {
-  font-size: 14px;
+  font-size: 1.4em;
+  bottom: 25px;
+  position: absolute;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .goal-info p {
   color: #efefef;
 }
 
+.goal-description {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.goal-due-text {
+  color: #f44336;
+}
+
+/*** End ***/
