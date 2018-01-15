@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { firebaseConnect, pathToJS } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 
-import GoogleButton from 'react-google-button';
-import FacebookLogin from 'react-facebook-login';
+import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
 
 @firebaseConnect()
 @connect(({ firebase }) => ({
@@ -33,17 +32,18 @@ render() {
   return (
     <div>
       <p>Or</p>
-    <div>
-      <FacebookLogin
+    <div className="social-login">
+      <FacebookLoginButton
         appId="144263412864280"
         autoLoad={false}
         fields="name, email, picture"
-        onClick={facebookLogin}>
-        Login via Facebook
-      </FacebookLogin>
-    </div>
-    <div className="social-login">
-      <GoogleButton onClick={googleLogin} />
+        onClick={facebookLogin}
+        text="Login with Facebook"
+        />
+      <GoogleLoginButton 
+        onClick={googleLogin}
+        text="Login with Google"
+      />
     </div>
   </div>
   )

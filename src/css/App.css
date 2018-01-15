@@ -207,6 +207,9 @@ img.profile-avatar {
   .user-profile-name {
     display: none;
   }
+  .nav-btn {
+    display: none;
+  }
 }
 
 .guest-account-signup div {
