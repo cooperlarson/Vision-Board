@@ -1,0 +1,112 @@
+.App {
+  text-align: center;
+  max-width: 100%;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 50px;
+  padding: 20px 0;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.App-title {
+  font-size: 1.5em;
+  margin-top: -5px;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.btn, .btn:focus {
+  background-color: rgb(36, 107, 213);
+  color: #f7f7f7;
+}
+
+.btn:hover {
+  background-color: rgb(29, 89, 172);
+  color: white;
+}
+
+.content-header {
+  height: 40px;
+}
+
+.content-header h3 {
+  margin: 0;
+}
+
+.content-header button.add-new {
+  float: right;
+  margin-top: -5px;
+}
+
+ul.goals-list {
+  list-style: none;
+  display: block;
+  margin-left: -15px;
+}
+
+i.fa.delete-goal {
+  position: absolute;
+  left: 15px;
+  top: 2px;
+  font-size: 24px;
+  color: rgb(186, 2, 2);
+  opacity: 0;
+  cursor: pointer;
+  cursor: hand;
+}
+
+i.fa.delete-goal:hover {
+  opacity: 1;
+}
+
+.goal-box {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.goal-item {
+  width: 100%;
+  height: 200px;
+  display: block;
+  float: left;
+  background-size: cover;
+  background-position: center;
+  border-radius: 7.5px;
+  margin-bottom: 20px;
+}
+
+.goal-info {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #fff;
+  height: 100%;
+  margin-top: -20px;
+  border-radius: 7.5px;
+}
+
+.goal-info:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.goal-info h3 {
+  padding-top: 50px;
+  font-size: 20px;
+}
+
+.goal-info h4 {
+  font-size: 14px;
+}
+
+.goal-info p {
+  color: #efefef;
+}
+
